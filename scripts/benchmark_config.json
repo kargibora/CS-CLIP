@@ -1,0 +1,4 @@
+{
+  "_comment": "This file is no longer needed - just use command line arguments",
+  "example_usage": "python generate_sampling_plot.py Winoground=5 VALSE=3 SugarCrepe=2"
+}

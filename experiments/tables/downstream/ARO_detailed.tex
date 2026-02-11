@@ -1,0 +1,37 @@
+\begin{table}[t]
+  \centering
+  \scriptsize
+  \caption{ARO detailed compositional results (text_contrastive_accuracy).}
+  \label{tab:ARO_detailed}
+  \begin{adjustbox}{max width=\textwidth}
+  \setlength{\tabcolsep}{2pt}
+  \begin{tabular}{p{5cm}c|c|c|c|c}
+    \toprule
+    Method & COCO\_Order & Flickr30k\_Order & VG\_Attribution & VG\_Relation & Overall Avg \\
+    \midrule
+    CLIP & \underline{40.0} & \underline{46.9} & \underline{57.6} & \underline{49.3} & \underline{48.5} \\
+    \midrule
+    LaCLIP (CC12M) & 21.2 & 25.3 & 52.6 & 58.6 & 39.4 \\
+    TripletCLIP (CC12M) & 19.8 & 23.8 & 55.3 & 52.8 & 37.9 \\
+    \midrule
+    CE CLIP & 72.1 & 76.2 & 73.6 & 85.1 & 76.8 \\
+    CLIC CogVLM (LAION) & 63.8 & 74.0 & 64.2 & 69.2 & 67.8 \\
+    CLIC CogVLM (PixPR RedCaps) & 63.0 & 72.3 & 62.7 & 69.3 & 66.8 \\
+    CLoVe & 86.6 & 88.3 & 68.5 & 83.3 & 81.7 \\
+    CON CLIP & 23.4 & 32.5 & 58.1 & 51.0 & 41.2 \\
+    DAC (LLM) & 61.7 & 71.6 & 61.8 & 64.4 & 64.9 \\
+    DAC (SAM) & 56.5 & 68.3 & 61.2 & 62.8 & 62.2 \\
+    DeGLA & 93.6 & 95.1 & 73.5 & 85.2 & 86.9 \\
+    FSC CLIP (CC3M) & 85.6 & 83.9 & 69.3 & 82.8 & 80.4 \\
+    FSC CLIP (COCO) & 94.2 & 95.2 & 71.7 & 82.7 & 86.0 \\
+    FSC CLIP (LAION+COCO) & 90.4 & 91.9 & 70.9 & 82.5 & 83.9 \\
+    NegCLIP (COCO) & 86.9 & 91.0 & 70.6 & 81.1 & 82.4 \\
+    READCLIP & \textbf{95.6} & \textbf{96.7} & \textbf{80.4} & \textbf{87.2} & \textbf{90.0} \\
+    TSVLC & 47.6 & 59.1 & 60.1 & 63.0 & 57.4 \\
+    \midrule
+    CS-CLIP & \emph{95.3} & \emph{96.7} & \emph{69.4} & \emph{86.3} & \emph{86.9} \\
+    CS-CLIP (w/o Negatives) & \emph{24.5} & \emph{32.0} & \emph{61.3} & \emph{52.7} & \emph{42.6} \\
+    \bottomrule
+  \end{tabular}
+  \end{adjustbox}
+\end{table}

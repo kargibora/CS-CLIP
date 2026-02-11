@@ -1,0 +1,37 @@
+\begin{table}[t]
+  \centering
+  \scriptsize
+  \caption{COCO-CF detailed compositional results (text_contrastive_accuracy).}
+  \label{tab:COCO-CF_detailed}
+  \begin{adjustbox}{max width=\textwidth}
+  \setlength{\tabcolsep}{2pt}
+  \begin{tabular}{p{5cm}c|c}
+    \toprule
+    Method & all & Overall Avg \\
+    \midrule
+    CLIP & \underline{74.0} & \underline{74.0} \\
+    \midrule
+    LaCLIP (CC12M) & 41.0 & 41.0 \\
+    TripletCLIP (CC12M) & 47.6 & 47.6 \\
+    \midrule
+    CE CLIP & 69.2 & 69.2 \\
+    CLIC CogVLM (LAION) & 78.0 & 78.0 \\
+    CLIC CogVLM (PixPR RedCaps) & 77.4 & 77.4 \\
+    CLoVe & 73.3 & 73.3 \\
+    CON CLIP & \textbf{78.8} & \textbf{78.8} \\
+    DAC (LLM) & 72.2 & 72.2 \\
+    DAC (SAM) & 72.8 & 72.8 \\
+    DeGLA & 75.7 & 75.7 \\
+    FSC CLIP (CC3M) & 73.7 & 73.7 \\
+    FSC CLIP (COCO) & 77.5 & 77.5 \\
+    FSC CLIP (LAION+COCO) & 75.8 & 75.8 \\
+    NegCLIP (COCO) & 76.4 & 76.4 \\
+    READCLIP & 73.9 & 73.9 \\
+    TSVLC & 76.1 & 76.1 \\
+    \midrule
+    CS-CLIP & \emph{78.2} & \emph{78.2} \\
+    CS-CLIP (w/o Negatives) & \emph{78.3} & \emph{78.3} \\
+    \bottomrule
+  \end{tabular}
+  \end{adjustbox}
+\end{table}

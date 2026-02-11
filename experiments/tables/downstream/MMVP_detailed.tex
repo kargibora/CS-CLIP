@@ -1,0 +1,37 @@
+\begin{table}[t]
+  \centering
+  \scriptsize
+  \caption{MMVP detailed compositional results (text_contrastive_accuracy).}
+  \label{tab:MMVP_detailed}
+  \begin{adjustbox}{max width=\textwidth}
+  \setlength{\tabcolsep}{2pt}
+  \begin{tabular}{p{5cm}c|c|c|c|c|c|c|c|c|c}
+    \toprule
+    Method & Camera Perspective & Color & Orientation & Presence & Quantity & Spatial & State & Structural Character & Text & Overall Avg \\
+    \midrule
+    CLIP & \underline{0.0} & \underline{\textbf{13.3}} & \underline{6.7} & \underline{6.7} & \underline{6.7} & \underline{20.0} & \underline{\textbf{46.7}} & \underline{13.3} & \underline{6.7} & \underline{13.3} \\
+    \midrule
+    LaCLIP (CC12M) & \textbf{26.7} & 6.7 & 6.7 & 13.3 & 13.3 & 6.7 & 33.3 & 13.3 & \textbf{20.0} & \textbf{15.6} \\
+    TripletCLIP (CC12M) & 6.7 & 13.3 & 0.0 & 6.7 & 0.0 & 26.7 & 26.7 & 0.0 & 13.3 & 10.4 \\
+    \midrule
+    CE CLIP & 0.0 & 6.7 & 13.3 & \textbf{20.0} & 6.7 & 6.7 & 13.3 & 6.7 & 6.7 & 8.9 \\
+    CLIC CogVLM (LAION) & 0.0 & 6.7 & 0.0 & 6.7 & 13.3 & 20.0 & 33.3 & 13.3 & 0.0 & 10.4 \\
+    CLIC CogVLM (PixPR RedCaps) & 6.7 & 13.3 & 13.3 & 0.0 & \textbf{20.0} & 26.7 & 6.7 & 0.0 & 6.7 & 10.4 \\
+    CLoVe & 13.3 & 0.0 & \textbf{20.0} & 6.7 & 6.7 & 40.0 & 20.0 & 0.0 & 13.3 & 13.3 \\
+    CON CLIP & 0.0 & 6.7 & 6.7 & 6.7 & 20.0 & 13.3 & 13.3 & 6.7 & 6.7 & 8.9 \\
+    DAC (LLM) & 13.3 & 0.0 & 20.0 & 0.0 & 6.7 & 13.3 & 26.7 & 13.3 & 6.7 & 11.1 \\
+    DAC (SAM) & 20.0 & 0.0 & 13.3 & 6.7 & 6.7 & 6.7 & 13.3 & 6.7 & 6.7 & 8.9 \\
+    DeGLA & 0.0 & 0.0 & 0.0 & 6.7 & 6.7 & 13.3 & 13.3 & 0.0 & 0.0 & 4.4 \\
+    FSC CLIP (CC3M) & 6.7 & 0.0 & 6.7 & 0.0 & 0.0 & 40.0 & 6.7 & 20.0 & 0.0 & 8.9 \\
+    FSC CLIP (COCO) & 13.3 & 0.0 & 6.7 & 6.7 & 13.3 & 26.7 & 13.3 & \textbf{26.7} & 6.7 & 12.6 \\
+    FSC CLIP (LAION+COCO) & 6.7 & 0.0 & 6.7 & 6.7 & 0.0 & 33.3 & 26.7 & 6.7 & 0.0 & 9.6 \\
+    NegCLIP (COCO) & 13.3 & 0.0 & 6.7 & 0.0 & 13.3 & 26.7 & 13.3 & 13.3 & 6.7 & 10.4 \\
+    READCLIP & 6.7 & 6.7 & 6.7 & 6.7 & 6.7 & 26.7 & 13.3 & 13.3 & 20.0 & 11.9 \\
+    TSVLC & 0.0 & 0.0 & 20.0 & 0.0 & 0.0 & 26.7 & 6.7 & 0.0 & 6.7 & 6.7 \\
+    \midrule
+    CS-CLIP & \emph{6.7} & \emph{13.3} & \emph{13.3} & \emph{0.0} & \emph{6.7} & \emph{\textbf{46.7}} & \emph{13.3} & \emph{6.7} & \emph{13.3} & \emph{13.3} \\
+    CS-CLIP (w/o Negatives) & \emph{13.3} & \emph{13.3} & \emph{13.3} & \emph{6.7} & \emph{13.3} & \emph{40.0} & \emph{6.7} & \emph{6.7} & \emph{0.0} & \emph{12.6} \\
+    \bottomrule
+  \end{tabular}
+  \end{adjustbox}
+\end{table}

@@ -1,0 +1,62 @@
+[
+  {
+    "run_id": "ablation_K2_nc1",
+    "label": "K=2, N_c=1",
+    "csv_path": "../evaluation/exp_csv/26-Dec_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_lr0.2_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_K2_nc1.csv",
+    "method_key": "ablation",
+    "ablation_group": "K_nc_grid",
+    "ablation_value": "2_1",
+    "K": 2,
+    "num_captions": 1
+  },
+  {
+    "run_id": "ablation_K2_nc2",
+    "label": "K=2, N_c=2",
+    "csv_path": "../evaluation/exp_csv/26-Dec_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_lr0.2_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_K2_nc2.csv",
+    "method_key": "ablation",
+    "ablation_group": "K_nc_grid",
+    "ablation_value": "2_2",
+    "K": 2,
+    "num_captions": 2
+  },
+  {
+    "run_id": "ablation_K2_nc3",
+    "label": "K=2, N_c=3",
+    "csv_path": "../evaluation/exp_csv/26-Dec_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_lr0.2_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_K2_nc3.csv",
+    "method_key": "ablation",
+    "ablation_group": "K_nc_grid",
+    "ablation_value": "2_3",
+    "K": 2,
+    "num_captions": 3
+  },
+  {
+    "run_id": "ablation_K3_nc1",
+    "label": "K=3, N_c=1",
+    "csv_path": "../evaluation/exp_csv/26-Dec_coco_with_components_negatives_structured_rel1.0_either_max3_lf1.0_lc0.5_lr0.2_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_K3_nc1.csv",
+    "method_key": "ablation",
+    "ablation_group": "K_nc_grid",
+    "ablation_value": "3_1",
+    "K": 3,
+    "num_captions": 1
+  },
+  {
+    "run_id": "ablation_K3_nc2",
+    "label": "K=3, N_c=2",
+    "csv_path": "../evaluation/exp_csv/26-Dec_coco_with_components_negatives_structured_rel1.0_either_max3_lf1.0_lc0.5_lr0.2_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_K3_nc2.csv",
+    "method_key": "ablation",
+    "ablation_group": "K_nc_grid",
+    "ablation_value": "3_2",
+    "K": 3,
+    "num_captions": 2
+  },
+  {
+    "run_id": "ablation_K3_nc3",
+    "label": "K=3, N_c=3",
+    "csv_path": "../evaluation/exp_csv/26-Dec_coco_with_components_negatives_structured_rel1.0_either_max3_lf1.0_lc0.5_lr0.2_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_K3_nc3.csv",
+    "method_key": "ablation",
+    "ablation_group": "K_nc_grid",
+    "ablation_value": "3_3",
+    "K": 3,
+    "num_captions": 3
+  }
+]

@@ -1,0 +1,21 @@
+[
+  "$ref:csclip_baseline",
+  {
+    "run_id": "ablation_context_true",
+    "label": "Context=True",
+    "csv_path": "../evaluation/exp_csv/01-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_context_true.csv",
+    "method_key": "ablation",
+    "ablation_group": "context",
+    "ablation_value": true,
+    "description": "Use context in component pairs"
+  },
+  {
+    "run_id": "ablation_context_false",
+    "label": "Context=False",
+    "csv_path": "../evaluation/exp_csv/01-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_context_false.csv",
+    "method_key": "ablation",
+    "ablation_group": "context",
+    "ablation_value": false,
+    "description": "No context in component pairs"
+  }
+]

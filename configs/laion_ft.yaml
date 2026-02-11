@@ -1,0 +1,55 @@
+# @package _global_
+# Configuration for LAION400M large-scale training
+
+defaults:
+  - dataset: laion400m     # Use LAION400M specific config
+  - training: default
+  - optimizer: adamw_ft
+  - model: vit_b32        # Use ViT-B/32 for large-scale training
+  - head: bimodal         # Use bimodal head (flexible_multi_layer) for HNB
+  - alignment: default
+  - loss: default
+  - dist: torchrun        # Use torchrun-optimized distributed config
+  - cache: default
+  - evaluation: default
+  - logger: default
+  - _self_
+
+# Large-scale LAION400M specific settings
+alignment:
+  alignment_type: "FT"
+  align_image: false
+  align_text: true
+
+training:
+  batch_size: 256  # Smaller batch per GPU for memory efficiency
+  epochs: 50       # More epochs for large dataset
+
+optimizer:
+  type: "adamw"        # Explicitly specify AdamW
+  learning_rate: 5e-7
+  lr_scaling: "none"   # sqrt scaling for large batch sizes
+  scheduler: "cosine"
+
+# Distributed training optimized for large datasets  
+# (distributed=true auto-detected by torchrun)
+dist:
+  num_workers: 4         # Data loading workers per GPU
+  pin_memory: true       # Pin memory for faster GPU transfer
+  disk_gather: true      # Use disk-based gathering for large embeddings
+
+# Enable comprehensive evaluation
+evaluation:
+  enable_dataset_eval: true
+  dataset_eval_datasets: ["SPEC_I2T", "VisMin", "VALSE", "BLA", "ColorFoil", "ColorSwap", "SugarCrepe_PP", "SugarCrepe", "VG_Attribution", "VG_Relation", "ControlledImages", "COCO_Counterfactuals", "Winoground", "NegBench", "COCO_Order", "Flickr30k_Order", "CLIPBench_wds_vtab-cifar10", "CLIPBench_wds_flickr8k", "CLIPBench_wds_imagenet1k", "CLIPBench_wds_vtab-caltech101", "CLIPBench_wds_mscoco_captions", "CLIPBench_wds_sun397", "CLIPBench_wds_imagenet_sketch", "CLIPBench_wds_imagenetv2", "CLIPBench_wds_imagenet-o"]
+  dataset_eval_csv_path: "laion_ft_results.csv"
+
+# layerwise:
+#   enabled: false
+
+# Hydra configuration
+hydra:
+  run:
+    dir: outputs/laion_hnb/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  job:
+    name: laion_hnb_training

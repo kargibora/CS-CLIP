@@ -1,0 +1,37 @@
+\begin{table}[t]
+  \centering
+  \scriptsize
+  \caption{Summary of compositional benchmark results (dataset averages over subsets).}
+  \label{tab:summary_compositional}
+  \begin{adjustbox}{max width=\textwidth}
+  \setlength{\tabcolsep}{2pt}
+  \begin{tabular}{lcccccccc}
+    \toprule
+    Model & COCO-CF & COLA & ColorSwap & MMVP & SPEC & VisMin & Winoground & Avg \\
+    \midrule
+    CLIP & \underline{60.4} & \underline{14.8} & \underline{\textbf{45.0}} & \underline{\textbf{4.1}} & \underline{11.2} & \underline{38.0} & \underline{7.8} & \underline{25.9} \\
+    \midrule
+    LaCLIP (CC12M) & 23.9 & 6.7 & 40.3 & 1.2 & 9.1 & 13.0 & 6.2 & 14.3 \\
+    TripletCLIP (CC12M) & 31.1 & 11.4 & 38.0 & 1.4 & 10.3 & 15.2 & 3.8 & 15.9 \\
+    \midrule
+    CE CLIP & 58.8 & 11.0 & 42.7 & 0.6 & 10.6 & 42.8 & 5.2 & 24.5 \\
+    CLIC CogVLM (LAION) & 62.4 & 14.3 & 40.7 & 0.3 & 9.4 & 35.2 & 9.2 & 24.5 \\
+    CLIC CogVLM (PixPR RedCaps) & 61.8 & 11.4 & 42.3 & 0.3 & 9.0 & 34.5 & \textbf{10.8} & 24.3 \\
+    CLoVe & 59.7 & 14.3 & 39.3 & 2.3 & 10.6 & -- & 6.2 & 22.1 \\
+    CON CLIP & 63.5 & 8.1 & 40.7 & 1.2 & 9.5 & 33.0 & 7.2 & 23.3 \\
+    DAC (LLM) & 56.7 & 16.2 & 36.7 & 2.9 & 10.9 & 32.2 & 6.5 & 23.2 \\
+    DAC (SAM) & 56.5 & 14.8 & 36.0 & 2.3 & 10.7 & 32.2 & 6.5 & 22.7 \\
+    DeGLA & 62.7 & 15.7 & 41.7 & 0.3 & \textbf{12.7} & \textbf{46.3} & 7.5 & 26.7 \\
+    FSC CLIP (CC3M) & 60.6 & 13.8 & 39.7 & 0.6 & 11.9 & 42.0 & 6.0 & 24.9 \\
+    FSC CLIP (COCO) & 64.5 & \textbf{21.9} & 38.3 & 0.3 & 11.3 & 44.5 & 9.5 & 27.2 \\
+    FSC CLIP (LAION+COCO) & 63.6 & 11.4 & 39.0 & 0.6 & 11.2 & 40.0 & 6.8 & 24.7 \\
+    NegCLIP (COCO) & 61.6 & 11.4 & 39.7 & 0.9 & 11.6 & 41.8 & 8.0 & 25.0 \\
+    READCLIP & 62.7 & 15.2 & 43.3 & 0.9 & 10.3 & 44.2 & 6.0 & 26.1 \\
+    TSVLC & 59.8 & 14.3 & 36.7 & 0.0 & 10.9 & 33.5 & 8.8 & 23.4 \\
+    \midrule
+    CS-CLIP & \emph{\textbf{65.1}} & \emph{20.0} & \emph{40.7} & \emph{3.5} & \emph{11.5} & \emph{42.2} & \emph{8.0} & \emph{\textbf{27.3}} \\
+    CS-CLIP (w/o Negatives) & \emph{64.8} & \emph{20.5} & \emph{39.7} & \emph{2.9} & \emph{10.4} & \emph{42.0} & \emph{9.5} & \emph{27.1} \\
+    \bottomrule
+  \end{tabular}
+  \end{adjustbox}
+\end{table}

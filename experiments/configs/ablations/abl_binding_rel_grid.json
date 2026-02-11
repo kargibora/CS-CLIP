@@ -1,0 +1,68 @@
+[
+    "$ref:clip_baseline",
+  "$ref:csclip_baseline",
+  "$ref:ce_clip",
+  "$ref:fsc_clip_coco",
+  "$ref:clic_cogvlm_laion",
+  "$ref:readeclip",
+  {
+    "run_id": "ablation_bind0.2_rel0.3",
+    "label": "bind=0.2, rel=0.3",
+    "csv_path": "../evaluation/exp_csv/01-Jan_coco_with_components_negatives_structured_rel0.3_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_bind0.2_rel0.3.csv",
+    "method_key": "ablation",
+    "ablation_group": "binding_rel_grid",
+    "ablation_value": "0.2_0.3",
+    "binding_prob": 0.2,
+    "rel_prob": 0.3
+  },
+  {
+    "run_id": "ablation_bind0.4_rel0.3",
+    "label": "bind=0.4, rel=0.3",
+    "csv_path": "../evaluation/exp_csv/01-Jan_coco_with_components_negatives_structured_rel0.3_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_bind0.4_rel0.3.csv",
+    "method_key": "ablation",
+    "ablation_group": "binding_rel_grid",
+    "ablation_value": "0.4_0.3",
+    "binding_prob": 0.4,
+    "rel_prob": 0.3
+  },
+  {
+    "run_id": "ablation_bind0.2_rel0.5",
+    "label": "bind=0.2, rel=0.5",
+    "csv_path": "../evaluation/exp_csv/01-Jan_coco_with_components_negatives_structured_rel0.5_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_bind0.2_rel0.5.csv",
+    "method_key": "ablation",
+    "ablation_group": "binding_rel_grid",
+    "ablation_value": "0.2_0.5",
+    "binding_prob": 0.2,
+    "rel_prob": 0.5
+  },
+  {
+    "run_id": "ablation_bind0.4_rel0.5",
+    "label": "bind=0.4, rel=0.5",
+    "csv_path": "../evaluation/exp_csv/01-Jan_coco_with_components_negatives_structured_rel0.5_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_bind0.4_rel0.5.csv",
+    "method_key": "ablation",
+    "ablation_group": "binding_rel_grid",
+    "ablation_value": "0.4_0.5",
+    "binding_prob": 0.4,
+    "rel_prob": 0.5
+  },
+  {
+    "run_id": "ablation_bind0.2_rel0.7",
+    "label": "bind=0.2, rel=0.7",
+    "csv_path": "../evaluation/exp_csv/01-Jan_coco_with_components_negatives_structured_rel0.7_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_bind0.2_rel0.7.csv",
+    "method_key": "ablation",
+    "ablation_group": "binding_rel_grid",
+    "ablation_value": "0.2_0.7",
+    "binding_prob": 0.2,
+    "rel_prob": 0.7
+  },
+  {
+    "run_id": "ablation_bind0.4_rel0.7",
+    "label": "bind=0.4, rel=0.7",
+    "csv_path": "../evaluation/exp_csv/01-Jan_coco_with_components_negatives_structured_rel0.7_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_bind0.4_rel0.7.csv",
+    "method_key": "ablation",
+    "ablation_group": "binding_rel_grid",
+    "ablation_value": "0.4_0.7",
+    "binding_prob": 0.4,
+    "rel_prob": 0.7
+  }
+]

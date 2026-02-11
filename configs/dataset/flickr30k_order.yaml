@@ -1,0 +1,17 @@
+# Flickr30k Order dataset configuration
+name: "Flickr30k_Order"
+data_path: "./datasets/Flickr30k_Order"
+subset_name: null
+
+# Data splitting configuration
+split_type: "object"
+val_ratio: 0.2
+split_by_tar: false
+
+# Standard settings
+use_tar_embeddings: false
+use_tar_batching: false
+
+# Flickr30k Order dataset kwargs
+dataset_kwargs:
+  download: true

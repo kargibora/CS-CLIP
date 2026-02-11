@@ -1,0 +1,26 @@
+# Training configuration
+# Core training hyperparameters
+batch_size: 512          # Batch size for training and validation
+epochs: 5               # Number of epochs to train
+val_ratio: 0.2           # Fraction of data to use for validation
+eval_n: 1                # Evaluate on validation set every N epochs
+
+# Numerical stability and precision
+force_float32: false     # Force float32 precision instead of float16
+use_amp: false           # Use Automatic Mixed Precision (AMP) for faster training with lower memory usage
+grad_clip_norm: 1.0      # Gradient clipping norm (0 to disable)
+
+# Checkpointing and model management
+save_path: './checkpoints'          # Directory to save model checkpoints and logs
+load_checkpoint: null    # Path to a model checkpoint to resume training
+use_best_model: true     # Load best checkpoint after training for evaluation
+
+# Experiment metadata
+name: ""                 # Experiment name prefix (for logging/checkpointing)
+seed: 42                 # Random seed for reproducibility
+test: false              # Run in test/debug mode (uses different wandb project)
+
+# Debug options
+debug_dataloader: false  # Debug dataloader by saving sample images and text
+enable_sample_logging: true
+sample_logging_num_samples: 10

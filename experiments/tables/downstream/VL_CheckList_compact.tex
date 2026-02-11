@@ -1,0 +1,37 @@
+\begin{table}[t]
+  \centering
+  \scriptsize
+  \caption{VL_CheckList compact (grouped) compositional results (text_contrastive_accuracy).}
+  \label{tab:VL_CheckList_compact}
+  \begin{adjustbox}{max width=\textwidth}
+  \setlength{\tabcolsep}{2pt}
+  \begin{tabular}{p{5cm}ccc|c}
+    \toprule
+    Method & attr & obj & rel & Overall Avg \\
+    \midrule
+    CLIP & \underline{64.3} & \underline{86.3} & \underline{54.8} & \underline{68.5} \\
+    \midrule
+    LaCLIP (CC12M) & 62.6 & 83.6 & 64.0 & 70.1 \\
+    TripletCLIP (CC12M) & 61.5 & 84.8 & 59.3 & 68.5 \\
+    \midrule
+    CE CLIP & 71.6 & 92.6 & 78.0 & 80.7 \\
+    CLIC CogVLM (LAION) & 71.2 & 91.7 & 69.1 & 77.3 \\
+    CLIC CogVLM (PixPR RedCaps) & 69.7 & 91.6 & 67.2 & 76.2 \\
+    CLoVe & 66.4 & 89.2 & 73.0 & 76.2 \\
+    CON CLIP & 64.2 & 88.4 & 57.1 & 69.9 \\
+    DAC (LLM) & 66.6 & 89.8 & 66.7 & 74.4 \\
+    DAC (SAM) & 65.4 & 90.0 & 67.8 & 74.4 \\
+    DeGLA & \textbf{72.8} & 93.0 & 76.2 & 80.7 \\
+    FSC CLIP (CC3M) & 71.9 & 91.5 & 79.7 & 81.0 \\
+    FSC CLIP (COCO) & 71.3 & 92.8 & 74.6 & 79.6 \\
+    FSC CLIP (LAION+COCO) & 69.7 & 90.6 & 77.6 & 79.3 \\
+    NegCLIP (COCO) & 68.2 & 91.1 & 71.1 & 76.8 \\
+    READCLIP & 68.0 & 92.6 & 74.9 & 78.5 \\
+    TSVLC & 66.8 & 89.6 & 66.5 & 74.3 \\
+    \midrule
+    CS-CLIP & \emph{72.3} & \emph{\textbf{93.6}} & \emph{\textbf{81.9}} & \emph{\textbf{82.6}} \\
+    CS-CLIP (w/o Negatives) & \emph{71.1} & \emph{92.9} & \emph{64.5} & \emph{76.2} \\
+    \bottomrule
+  \end{tabular}
+  \end{adjustbox}
+\end{table}

@@ -1,0 +1,11 @@
+LENGTH BIAS HYPOTHESIS TEST RESULTS
+==================================================
+
+Model: ViT-B-32
+Samples tested: 1000
+
+CLIP preferred LONG (incorrect): 59.8%
+CLIP preferred SHORT (correct):  40.2%
+
+Average similarity difference: 0.0238
+P-value (binomial test): 0.000000

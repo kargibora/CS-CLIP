@@ -1,0 +1,37 @@
+\begin{table}[t]
+  \centering
+  \scriptsize
+  \caption{ColorFoil detailed compositional results (text_contrastive_accuracy).}
+  \label{tab:ColorFoil_detailed}
+  \begin{adjustbox}{max width=\textwidth}
+  \setlength{\tabcolsep}{2pt}
+  \begin{tabular}{p{5cm}c|c}
+    \toprule
+    Method & all & Overall Avg \\
+    \midrule
+    CLIP & \underline{84.2} & \underline{84.2} \\
+    \midrule
+    LaCLIP (CC12M) & 69.1 & 69.1 \\
+    TripletCLIP (CC12M) & 75.5 & 75.5 \\
+    \midrule
+    CE CLIP & \textbf{93.0} & \textbf{93.0} \\
+    CLIC CogVLM (LAION) & 84.6 & 84.6 \\
+    CLIC CogVLM (PixPR RedCaps) & 84.9 & 84.9 \\
+    CLoVe & 88.3 & 88.3 \\
+    CON CLIP & 83.0 & 83.0 \\
+    DAC (LLM) & 84.7 & 84.7 \\
+    DAC (SAM) & 84.8 & 84.8 \\
+    DeGLA & 91.6 & 91.6 \\
+    FSC CLIP (CC3M) & 91.1 & 91.1 \\
+    FSC CLIP (COCO) & 90.8 & 90.8 \\
+    FSC CLIP (LAION+COCO) & 89.8 & 89.8 \\
+    NegCLIP (COCO) & 87.5 & 87.5 \\
+    READCLIP & 91.9 & 91.9 \\
+    TSVLC & 82.1 & 82.1 \\
+    \midrule
+    CS-CLIP & \emph{90.5} & \emph{90.5} \\
+    CS-CLIP (w/o Negatives) & \emph{89.3} & \emph{89.3} \\
+    \bottomrule
+  \end{tabular}
+  \end{adjustbox}
+\end{table}

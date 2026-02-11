@@ -1,0 +1,42 @@
+[
+  {
+    "run_id": "ablation_paraphrase_0.1",
+    "label": "p_para=0.1",
+    "csv_path": "../evaluation/exp_csv/26-Dec_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_lr0.2_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_paraphrase_0.1.csv",
+    "method_key": "ablation",
+    "ablation_group": "paraphrase_prob",
+    "ablation_value": 0.1
+  },
+  {
+    "run_id": "ablation_paraphrase_0.2",
+    "label": "p_para=0.2",
+    "csv_path": "../evaluation/exp_csv/26-Dec_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_lr0.2_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_paraphrase_0.2.csv",
+    "method_key": "ablation",
+    "ablation_group": "paraphrase_prob",
+    "ablation_value": 0.2
+  },
+  {
+    "run_id": "ablation_paraphrase_0.3",
+    "label": "p_para=0.3",
+    "csv_path": "../evaluation/exp_csv/27-Dec_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_lr0.2_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_paraphrase_0.3.csv",
+    "method_key": "ablation",
+    "ablation_group": "paraphrase_prob",
+    "ablation_value": 0.3
+  },
+  {
+    "run_id": "ablation_paraphrase_0.5",
+    "label": "p_para=0.5",
+    "csv_path": "../evaluation/exp_csv/27-Dec_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_lr0.2_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_paraphrase_0.5.csv",
+    "method_key": "ablation",
+    "ablation_group": "paraphrase_prob",
+    "ablation_value": 0.5
+  },
+  {
+    "run_id": "ablation_paraphrase_1.0",
+    "label": "p_para=1.0",
+    "csv_path": "../evaluation/exp_csv/27-Dec_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_lr0.2_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_paraphrase_1.0.csv",
+    "method_key": "ablation",
+    "ablation_group": "paraphrase_prob",
+    "ablation_value": 1.0
+  }
+]

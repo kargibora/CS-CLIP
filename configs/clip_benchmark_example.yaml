@@ -1,0 +1,47 @@
+# Example config for CLIP Benchmark evaluation during training
+# Extends your existing config with CLIP Benchmark datasets
+
+defaults:
+  - hnb_alignment  # Or your base config
+
+# Override dataset evaluation settings
+evaluation:
+  enable_dataset_eval: true
+  dataset_eval_datasets:
+    - VALSE
+    - SugarCrepe
+    - CLIPBenchmark  # Add CLIP Benchmark datasets
+  dataset_eval_csv_path: "results/clip_benchmark_training_eval.csv"
+  eval_n: 1  # Evaluate every epoch
+
+# Configure CLIP Benchmark evaluation
+# The CLIPBenchmark "dataset" will evaluate on these subsets:
+dataset_kwargs:
+  CLIPBenchmark:
+    # Common classification benchmarks
+    imagenet1k:
+      task: "zeroshot_classification"
+      split: "test"
+    
+    cifar10:
+      task: "zeroshot_classification"
+      split: "test"
+    
+    cifar100:
+      task: "zeroshot_classification"
+      split: "test"
+    
+    # Retrieval benchmarks
+    mscoco_captions:
+      task: "zeroshot_retrieval"
+      split: "test"
+    
+    flickr30k:
+      task: "zeroshot_retrieval"
+      split: "test"
+
+# Your regular training dataset config remains unchanged
+dataset:
+  name: "LAION400M"
+  subset_name: "all"
+  # ... rest of your training config ...

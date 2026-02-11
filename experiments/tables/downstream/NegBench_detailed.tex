@@ -1,0 +1,37 @@
+\begin{table}[t]
+  \centering
+  \scriptsize
+  \caption{NegBench detailed compositional results (text_contrastive_accuracy).}
+  \label{tab:NegBench_detailed}
+  \begin{adjustbox}{max width=\textwidth}
+  \setlength{\tabcolsep}{2pt}
+  \begin{tabular}{p{5cm}c|c|c|c}
+    \toprule
+    Method & COCO\_val\_mcq\_llama3.1\_rephrased & VOC2007\_mcq\_llama3.1\_rephrased & msr\_vtt\_mcq\_rephrased\_llama & Overall Avg \\
+    \midrule
+    CLIP & \underline{30.8} & \underline{31.7} & \underline{29.2} & \underline{30.6} \\
+    \midrule
+    LaCLIP (CC12M) & 26.4 & 23.2 & 26.9 & 25.5 \\
+    TripletCLIP (CC12M) & 31.2 & 22.7 & 27.9 & 27.3 \\
+    \midrule
+    CE CLIP & 37.5 & 37.0 & 32.6 & 35.7 \\
+    CLIC CogVLM (LAION) & 29.0 & 32.5 & 29.3 & 30.3 \\
+    CLIC CogVLM (PixPR RedCaps) & 32.1 & 34.0 & 31.1 & 32.4 \\
+    CLoVe & 30.0 & 19.9 & 25.6 & 25.2 \\
+    CON CLIP & 23.9 & 38.2 & \textbf{42.3} & 34.8 \\
+    DAC (LLM) & 39.0 & 37.5 & 31.2 & 35.9 \\
+    DAC (SAM) & \textbf{41.8} & \textbf{39.1} & 30.6 & \textbf{37.2} \\
+    DeGLA & 31.4 & 33.0 & 27.7 & 30.7 \\
+    FSC CLIP (CC3M) & 31.6 & 24.4 & 24.9 & 27.0 \\
+    FSC CLIP (COCO) & 25.6 & 27.4 & 25.2 & 26.0 \\
+    FSC CLIP (LAION+COCO) & 33.0 & 25.6 & 28.6 & 29.1 \\
+    NegCLIP (COCO) & 28.7 & 30.5 & 26.5 & 28.6 \\
+    READCLIP & 27.9 & 28.7 & 25.9 & 27.5 \\
+    TSVLC & 39.3 & 38.7 & 31.6 & 36.5 \\
+    \midrule
+    CS-CLIP & \emph{31.4} & \emph{37.8} & \emph{29.2} & \emph{32.8} \\
+    CS-CLIP (w/o Negatives) & \emph{25.0} & \emph{28.8} & \emph{28.2} & \emph{27.3} \\
+    \bottomrule
+  \end{tabular}
+  \end{adjustbox}
+\end{table}

@@ -1,0 +1,24 @@
+# ViT-B/16 Model Configuration
+# CLIP ViT-B/16 backbone with 512-dimensional embeddings
+
+defaults:
+  - default  # Inherits head configuration from default
+
+# CLIP backbone model
+clip_model: "ViT-B-16@openai"   # CLIP ViT-B/16 with OpenAI weights
+
+# Basic model architecture  
+embedding_dim: 512       # ViT-B/16 output embedding dimension
+mlp_layers: 1           # Number of MLP layers in alignment
+
+# Multi-layer alignment configuration
+alphas: []              # Fixed alpha weights for multi-layer alignment
+init_alpha: 0.00        # Initial value for learnable alphas (if enabled)
+learnable_alphas: false # Use learnable alpha weights for multi-layer aggregation
+
+# Layer selection for alignment (empty means only 'final' layer)
+text_layer_names: []    # Names of text layers to align (in addition to 'final')
+image_layer_names: []   # Names of image layers to align (in addition to 'final')
+
+# Backward compatibility flag
+use_cross_modal_head: false      # Whether to use LabCLIP modifications (deprecated - use head config instead)

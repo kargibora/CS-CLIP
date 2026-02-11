@@ -1,0 +1,37 @@
+\begin{table}[t]
+  \centering
+  \scriptsize
+  \caption{Text-to-Image retrieval results (Recall@1).}
+  \label{tab:retrieval_t2i}
+  \begin{adjustbox}{max width=\textwidth}
+  \setlength{\tabcolsep}{3pt}
+  \begin{tabular}{lccc}
+    \toprule
+    Model & flickr8k & mscoco-captions & Avg \\
+    \midrule
+    CLIP & \underline{72.9} & \underline{52.5} & \underline{62.7} \\
+    \midrule
+    LaCLIP (CC12M) & 22.2 & 10.5 & 16.3 \\
+    TripletCLIP (CC12M) & 28.4 & 14.9 & 21.7 \\
+    \midrule
+    CE CLIP & 67.8 & 56.1 & 61.9 \\
+    CLIC CogVLM (LAION) & 68.3 & 47.6 & 57.9 \\
+    CLIC CogVLM (PixPR RedCaps) & 70.8 & 47.1 & 58.9 \\
+    CLoVe & 64.0 & 46.3 & 55.2 \\
+    CON CLIP & 70.0 & 49.1 & 59.5 \\
+    DAC (LLM) & 66.7 & 46.0 & 56.3 \\
+    DAC (SAM) & 66.5 & 45.9 & 56.2 \\
+    DeGLA & 70.2 & 50.9 & 60.6 \\
+    FSC CLIP (CC3M) & 70.0 & 47.6 & 58.8 \\
+    FSC CLIP (COCO) & 79.2 & 60.4 & 69.8 \\
+    FSC CLIP (LAION+COCO) & 68.8 & 49.6 & 59.2 \\
+    NegCLIP (COCO) & 75.6 & 56.2 & 65.9 \\
+    READCLIP & 75.6 & 60.3 & 68.0 \\
+    TSVLC & 69.8 & 50.1 & 60.0 \\
+    \midrule
+    CS-CLIP & \emph{\textbf{81.5}} & \emph{61.9} & \emph{\textbf{71.7}} \\
+    CS-CLIP (w/o Negatives) & \emph{79.4} & \emph{\textbf{62.9}} & \emph{71.1} \\
+    \bottomrule
+  \end{tabular}
+  \end{adjustbox}
+\end{table}

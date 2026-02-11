@@ -1,0 +1,519 @@
+# Ablation Checkpoints - VL_CheckList Evaluation
+#
+# This file contains all ablation checkpoints that need VL_CheckList evaluation.
+# Results will be APPENDED to existing CSV files.
+#
+# Usage:
+#   python scripts/batch_evaluate_checkpoints.py --config configs/eval_ablations_vlchecklist.yaml \
+#       --output_dir experiments/evaluation/ablations
+#   
+#   # Multi-GPU (8 GPUs):
+#   torchrun --nproc_per_node=8 scripts/batch_evaluate_checkpoints.py \
+#       --config configs/eval_ablations_vlchecklist.yaml \
+#       --output_dir experiments/evaluation/ablations
+#
+#   # To replicate results to all existing steps in CSV:
+#   python scripts/batch_evaluate_checkpoints.py --config configs/eval_ablations_vlchecklist.yaml \
+#       --output_dir experiments/evaluation/ablations --replicate_to_all_steps
+
+checkpoints:
+  # ============================================================================
+  # Component Loss Weight Ablation (λ_comp)
+  # ============================================================================
+  
+  # - name: "CS-CLIP λ_comp=0.1"
+  #   csv_filename: "03-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.1_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_comp_lambda_0.1.csv"
+  #   checkpoint_type: "external"
+  #   checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.1_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_comp_lambda_0.1/last_checkpoint.pt"
+  #   base_model: "ViT-B/32"
+  #   force_openclip: true
+
+  # - name: "CS-CLIP λ_comp=0.25"
+  #   csv_filename: "03-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.25_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_comp_lambda_0.25.csv"
+  #   checkpoint_type: "external"
+  #   checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.25_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_comp_lambda_0.25/last_checkpoint.pt"
+  #   base_model: "ViT-B/32"
+  #   force_openclip: true
+
+  # - name: "CS-CLIP λ_comp=0.75"
+  #   csv_filename: "04-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.75_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_comp_lambda_0.75.csv"
+  #   checkpoint_type: "external"
+  #   checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.75_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_comp_lambda_0.75/last_checkpoint.pt"
+  #   base_model: "ViT-B/32"
+  #   force_openclip: true
+
+  # - name: "CS-CLIP λ_comp=1.0"
+  #   csv_filename: "04-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc1.0_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_comp_lambda_1.0.csv"
+  #   checkpoint_type: "external"
+  #   checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc1.0_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_comp_lambda_1.0/last_checkpoint.pt"
+  #   base_model: "ViT-B/32"
+  #   force_openclip: true
+
+  # ============================================================================
+  # Rank Loss Weight Ablation (λ_rank)
+  # ============================================================================
+
+  - name: "CS-CLIP λ_rank=0.1"
+    csv_filename: "02-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_lr0.1_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_rank_lambda_0.1.csv"
+    checkpoint_type: "external"
+    checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_lr0.1_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_rank_lambda_0.1/last_checkpoint.pt"
+    base_model: "ViT-B/32"
+    force_openclip: true
+
+  - name: "CS-CLIP λ_rank=0.2"
+    csv_filename: "02-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_lr0.2_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_rank_lambda_0.2.csv"
+    checkpoint_type: "external"
+    checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_lr0.2_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_rank_lambda_0.2/last_checkpoint.pt"
+    base_model: "ViT-B/32"
+    force_openclip: true
+
+  - name: "CS-CLIP λ_rank=0.3"
+    csv_filename: "02-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_lr0.3_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_rank_lambda_0.3.csv"
+    checkpoint_type: "external"
+    checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_lr0.3_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_rank_lambda_0.3/last_checkpoint.pt"
+    base_model: "ViT-B/32"
+    force_openclip: true
+
+  - name: "CS-CLIP λ_rank=0.5"
+    csv_filename: "02-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_lr0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_rank_lambda_0.5.csv"
+    checkpoint_type: "external"
+    checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_lr0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_rank_lambda_0.5/last_checkpoint.pt"
+    base_model: "ViT-B/32"
+    force_openclip: true
+
+  - name: "CS-CLIP λ_rank=1.0"
+    csv_filename: "02-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_lr1.0_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_rank_lambda_1.0.csv"
+    checkpoint_type: "external"
+    checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_lr1.0_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_rank_lambda_1.0/last_checkpoint.pt"
+    base_model: "ViT-B/32"
+    force_openclip: true
+
+  # ============================================================================
+  # Fine-tuning Strategy Ablation
+  # ============================================================================
+
+  # - name: "CS-CLIP FT Text Only"
+  #   csv_filename: "15-Jan_ablation_freeze_image_ft_text.csv"
+  #   checkpoint_type: "external"
+  #   checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/ablation_freeze_image_ft_text/last_checkpoint.pt"
+  #   base_model: "ViT-B/32"
+  #   force_openclip: true
+
+  # - name: "CS-CLIP FT Image Only"
+  #   csv_filename: "15-Jan_ablation_freeze_text_ft_image.csv"
+  #   checkpoint_type: "external"
+  #   checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/ablation_freeze_text_ft_image/last_checkpoint.pt"
+  #   base_model: "ViT-B/32"
+  #   force_openclip: true
+
+  # # ============================================================================
+  # # Architecture Ablation
+  # # ============================================================================
+
+  # - name: "CS-CLIP ViT-B/16"
+  #   csv_filename: "15-Jan_ablation_model_vit_b16_openai.csv"
+  #   checkpoint_type: "external"
+  #   checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/ablation_model_vit_b16_openai/last_checkpoint.pt"
+  #   base_model: "ViT-B/16"
+  #   force_openclip: true
+
+  # - name: "CS-CLIP ViT-L/14"
+  #   csv_filename: "15-Jan_ablation_model_vit_l14_openai.csv"
+  #   checkpoint_type: "external"
+  #   checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/ablation_model_vit_l14_openai/last_checkpoint.pt"
+  #   base_model: "ViT-L/14"
+  #   force_openclip: true
+
+  # # ============================================================================
+  # # Paraphrase Loss Weight Ablation (λ_para)
+  # # ============================================================================
+
+  - name: "CS-CLIP λ_para=0.1"
+    csv_filename: "16-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_paraphrase_0.1.csv"
+    checkpoint_type: "external"
+    checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_paraphrase_0.1/last_checkpoint.pt"
+    base_model: "ViT-B/32"
+    force_openclip: true
+
+  - name: "CS-CLIP λ_para=0.2"
+    csv_filename: "16-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_paraphrase_0.2.csv"
+    checkpoint_type: "external"
+    checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_paraphrase_0.2/last_checkpoint.pt"
+    base_model: "ViT-B/32"
+    force_openclip: true
+
+  - name: "CS-CLIP λ_para=0.3"
+    csv_filename: "17-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_paraphrase_0.3.csv"
+    checkpoint_type: "external"
+    checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_paraphrase_0.3/last_checkpoint.pt"
+    base_model: "ViT-B/32"
+    force_openclip: true
+
+  - name: "CS-CLIP λ_para=0.5"
+    csv_filename: "17-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_paraphrase_0.5.csv"
+    checkpoint_type: "external"
+    checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_paraphrase_0.5/last_checkpoint.pt"
+    base_model: "ViT-B/32"
+    force_openclip: true
+
+  # # ============================================================================
+  # # Number of Component Captions Ablation (N)
+  # # ============================================================================
+
+  # - name: "CS-CLIP N=1"
+  #   csv_filename: "17-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_num_comp_captions_1.csv"
+  #   checkpoint_type: "external"
+  #   checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_num_comp_captions_1/last_checkpoint.pt"
+  #   base_model: "ViT-B/32"
+  #   force_openclip: true
+
+  # - name: "CS-CLIP N=3"
+  #   csv_filename: "17-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_num_comp_captions_3.csv"
+  #   checkpoint_type: "external"
+  #   checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_num_comp_captions_3/last_checkpoint.pt"
+  #   base_model: "ViT-B/32"
+  #   force_openclip: true
+
+  # - name: "CS-CLIP N=4"
+  #   csv_filename: "17-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_num_comp_captions_4.csv"
+  #   checkpoint_type: "external"
+  #   checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_num_comp_captions_4/last_checkpoint.pt"
+  #   base_model: "ViT-B/32"
+  #   force_openclip: true
+
+  # # ============================================================================
+  #   # Weight Decay Ablation (WD)
+  #   # ============================================================================
+
+  # - name: "CS-CLIP WD=1e-3"
+  #   csv_filename: "01-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-3_neg_rel0.2_inplace1.0_swap1.0_ablation_wd_1e-3.csv"
+  #   checkpoint_type: "external"
+  #   checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-3_neg_rel0.2_inplace1.0_swap1.0_ablation_wd_1e-3/last_checkpoint.pt"
+  #   base_model: "ViT-B/32"
+  #   force_openclip: true
+
+  # - name: "CS-CLIP WD=5e-3"
+  #   csv_filename: "01-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd5e-3_neg_rel0.2_inplace1.0_swap1.0_ablation_wd_5e-3.csv"
+  #   checkpoint_type: "external"
+  #   checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd5e-3_neg_rel0.2_inplace1.0_swap1.0_ablation_wd_5e-3/last_checkpoint.pt"
+  #   base_model: "ViT-B/32"
+  #   force_openclip: true
+
+  # - name: "CS-CLIP WD=1e-2"
+  #   csv_filename: "01-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_wd_1e-2.csv"
+  #   checkpoint_type: "external"
+  #   checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_wd_1e-2/last_checkpoint.pt"
+  #   base_model: "ViT-B/32"
+  #   force_openclip: true
+
+  # - name: "CS-CLIP WD=2e-2"
+  #   csv_filename: "01-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd2e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_wd_2e-2.csv"
+  #   checkpoint_type: "external"
+  #   checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd2e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_wd_2e-2/last_checkpoint.pt"
+  #   base_model: "ViT-B/32"
+  #   force_openclip: true
+
+  # - name: "CS-CLIP WD=5e-2"
+  #   csv_filename: "01-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd5e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_wd_5e-2.csv"
+  #   checkpoint_type: "external"
+  #   checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd5e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_wd_5e-2/last_checkpoint.pt"
+  #   base_model: "ViT-B/32"
+  #   force_openclip: true
+
+  # # ============================================================================
+  # # Batch Size Ablation (BS)
+  # # ============================================================================
+
+  # - name: "CS-CLIP BS=32"
+  #   csv_filename: "01-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr1ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_bs32_lr1.3e-06.csv"
+  #   checkpoint_type: "external"
+  #   checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr1ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_bs32_lr1.3e-06/last_checkpoint.pt"
+  #   base_model: "ViT-B/32"
+  #   force_openclip: true
+
+  # - name: "CS-CLIP BS=64"
+  #   csv_filename: "01-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr3ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_bs64_lr2.5e-06.csv"
+  #   checkpoint_type: "external"
+  #   checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr3ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_bs64_lr2.5e-06/last_checkpoint.pt"
+  #   base_model: "ViT-B/32"
+  #   force_openclip: true
+
+  # - name: "CS-CLIP BS=128"
+  #   csv_filename: "01-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_bs128_lr5.0e-06.csv"
+  #   checkpoint_type: "external"
+  #   checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_bs128_lr5.0e-06/last_checkpoint.pt"
+  #   base_model: "ViT-B/32"
+  #   force_openclip: true
+
+  # # ============================================================================
+  # # Learning Rate Ablation (LR)
+  # # ============================================================================
+
+  # - name: "CS-CLIP LR=1e-6"
+  #   csv_filename: "31-Dec_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr1ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_lr_1e-6.csv"
+  #   checkpoint_type: "external"
+  #   checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr1ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_lr_1e-6/last_checkpoint.pt"
+  #   base_model: "ViT-B/32"
+  #   force_openclip: true
+
+  # - name: "CS-CLIP LR=2e-6"
+  #   csv_filename: "31-Dec_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr2ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_lr_2e-6.csv"
+  #   checkpoint_type: "external"
+  #   checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr2ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_lr_2e-6/last_checkpoint.pt"
+  #   base_model: "ViT-B/32"
+  #   force_openclip: true
+
+  # - name: "CS-CLIP LR=5e-6"
+  #   csv_filename: "31-Dec_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_lr_5e-6.csv"
+  #   checkpoint_type: "external"
+  #   checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_lr_5e-6/last_checkpoint.pt"
+  #   base_model: "ViT-B/32"
+  #   force_openclip: true
+
+  # - name: "CS-CLIP LR=1e-5"
+  #   csv_filename: "01-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr1ee-5_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_lr_1e-5.csv"
+  #   checkpoint_type: "external"
+  #   checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr1ee-5_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_lr_1e-5/last_checkpoint.pt"
+  #   base_model: "ViT-B/32"
+  #   force_openclip: true
+
+  # - name: "CS-CLIP LR=2e-5"
+  #   csv_filename: "01-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr2ee-5_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_lr_2e-5.csv"
+  #   checkpoint_type: "external"
+  #   checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr2ee-5_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_lr_2e-5/last_checkpoint.pt"
+  #   base_model: "ViT-B/32"
+  #   force_openclip: true
+
+  # # ============================================================================
+  # # Pipeline Ablation
+  # # ============================================================================
+
+
+  # # ============================================================================
+  # # Pair Sampling Ablation (Relation Probability)
+  # # ============================================================================
+
+  # - name: "CS-CLIP Rel Prob=0.0"
+  #   csv_filename: "31-Dec_coco_with_components_negatives_structured_rel0.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_components_only.csv"
+  #   checkpoint_type: "external"
+  #   checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel0.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_components_only/last_checkpoint.pt"
+  #   base_model: "ViT-B/32"
+  #   force_openclip: true
+
+
+  # - name: "CS-CLIP Rel Prob=0.25"
+  #   csv_filename: "31-Dec_coco_with_components_negatives_structured_rel0.25_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_rel_prob_0.25.csv"
+  #   checkpoint_type: "external"
+  #   checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel0.25_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_rel_prob_0.25/last_checkpoint.pt"
+  #   base_model: "ViT-B/32"
+  #   force_openclip: true
+
+  # - name: "CS-CLIP Rel Prob=0.5"
+  #   csv_filename: "31-Dec_coco_with_components_negatives_structured_rel0.5_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_rel_prob_0.5.csv"
+  #   checkpoint_type: "external"
+  #   checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel0.5_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_rel_prob_0.5/last_checkpoint.pt"
+  #   base_model: "ViT-B/32"
+  #   force_openclip: true
+
+  # - name: "CS-CLIP Rel Prob=0.75"
+  #   csv_filename: "31-Dec_coco_with_components_negatives_structured_rel0.75_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_rel_prob_0.75.csv"
+  #   checkpoint_type: "external"
+  #   checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel0.75_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_rel_prob_0.75/last_checkpoint.pt"
+  #   base_model: "ViT-B/32"
+  #   force_openclip: true
+
+  # # ============================================================================
+  # # Swap Probability Ablation
+  # # ============================================================================
+
+  # - name: "CS-CLIP Swap=0.0"
+  #   csv_filename: "27-Dec_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_lr0.2_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap0.0_ablation_swap0.0_inplace1.0.csv"
+  #   checkpoint_type: "external"
+  #   checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_lr0.2_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap0.0_ablation_swap0.0_inplace1.0/last_checkpoint.pt"
+  #   base_model: "ViT-B/32"
+  #   force_openclip: true
+
+  # - name: "CS-CLIP Swap=0.5"
+  #   csv_filename: "27-Dec_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_lr0.2_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap0.5_ablation_swap0.5_inplace1.0.csv"
+  #   checkpoint_type: "external"
+  #   checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_lr0.2_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap0.5_ablation_swap0.5_inplace1.0/last_checkpoint.pt"
+  #   base_model: "ViT-B/32"
+  #   force_openclip: true
+
+  # - name: "CS-CLIP Swap=1.0"
+  #   csv_filename: "02-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_lr0.2_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_swap1.0_inplace1.0.csv"
+  #   checkpoint_type: "external"
+  #   checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_lr0.2_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_swap1.0_inplace1.0/last_checkpoint.pt"
+  #   base_model: "ViT-B/32"
+  #   force_openclip: true
+
+    # ============================================================================
+    # Loss Function Ablation
+    # ============================================================================
+
+  # - name: "CS-CLIP (CLIP + Comps w/ Neg)"
+  #   csv_filename: "09-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_clip_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_clip_comp_clip.csv"
+  #   checkpoint_type: "external"
+  #   checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_clip_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_clip_comp_clip/last_checkpoint.pt"
+  #   base_model: "ViT-B/32"
+  #   force_openclip: true
+
+  # - name: "CS-CLIP (CLIP + Comps)"
+  #   csv_filename: "09-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_clip_comp_baseline.csv"
+  #   checkpoint_type: "external"
+  #   checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_clip_comp_baseline/last_checkpoint.pt"
+  #   base_model: "ViT-B/32"
+  #   force_openclip: true
+
+  # - name: "CS-CLIP (NegCLIP + Comp)"
+  #   csv_filename: "21-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_clip_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_negclip_w_comp.csv"
+  #   checkpoint_type: "external"
+  #   checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_clip_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_negclip_w_comp/last_checkpoint.pt"
+  #   base_model: "ViT-B/32"
+  #   force_openclip: true
+
+  # - name: "CLIP Fine-tuning"
+  #   csv_filename: "21-Jan_coco_without_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_clip_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_clip_ft.csv"
+  #   checkpoint_type: "external"
+  #   checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_without_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_clip_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_clip_ft/last_checkpoint.pt"
+  #   base_model: "ViT-B/32"
+  #   force_openclip: true
+
+  # # ============================================================================
+  # # Alignment Loss Weight Ablation (λ_align)
+  # # Alignment loss encourages component text embeddings to align with image embeddings
+  # # ============================================================================
+
+  - name: "CS-CLIP λ_align=0.1"
+    csv_filename: "02-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_la0.1_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_align_lambda_0.1.csv"
+    checkpoint_type: "external"
+    checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_la0.1_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_align_lambda_0.1/last_checkpoint.pt"
+    base_model: "ViT-B/32"
+    force_openclip: true
+
+  - name: "CS-CLIP λ_align=0.2"
+    csv_filename: "02-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_la0.2_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_align_lambda_0.2.csv"
+    checkpoint_type: "external"
+    checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_la0.2_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_align_lambda_0.2/last_checkpoint.pt"
+    base_model: "ViT-B/32"
+    force_openclip: true
+
+  - name: "CS-CLIP λ_align=0.3"
+    csv_filename: "02-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_la0.3_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_align_lambda_0.3.csv"
+    checkpoint_type: "external"
+    checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_la0.3_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_align_lambda_0.3/last_checkpoint.pt"
+    base_model: "ViT-B/32"
+    force_openclip: true
+
+  - name: "CS-CLIP λ_align=0.5"
+    csv_filename: "02-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_la0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_align_lambda_0.5.csv"
+    checkpoint_type: "external"
+    checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_la0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_align_lambda_0.5/last_checkpoint.pt"
+    base_model: "ViT-B/32"
+    force_openclip: true
+
+  - name: "CS-CLIP λ_align=1.0"
+    csv_filename: "02-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_la1.0_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_align_lambda_1.0.csv"
+    checkpoint_type: "external"
+    checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_la1.0_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_align_lambda_1.0/last_checkpoint.pt"
+    base_model: "ViT-B/32"
+    force_openclip: true
+
+  # ============================================================================
+  # Text Contrastive Loss Weight Ablation (λ_tc)
+  # Text contrastive loss operates in text embedding space
+  # ============================================================================
+
+  - name: "CS-CLIP λ_tc=0.1"
+    csv_filename: "03-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_ltc0.1_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_textcontr_lambda_0.1.csv"
+    checkpoint_type: "external"
+    checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_ltc0.1_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_textcontr_lambda_0.1/last_checkpoint.pt"
+    base_model: "ViT-B/32"
+    force_openclip: true
+
+  - name: "CS-CLIP λ_tc=0.2"
+    csv_filename: "03-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_ltc0.2_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_textcontr_lambda_0.2.csv"
+    checkpoint_type: "external"
+    checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_ltc0.2_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_textcontr_lambda_0.2/last_checkpoint.pt"
+    base_model: "ViT-B/32"
+    force_openclip: true
+
+  - name: "CS-CLIP λ_tc=0.3"
+    csv_filename: "03-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_ltc0.3_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_textcontr_lambda_0.3.csv"
+    checkpoint_type: "external"
+    checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_ltc0.3_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_textcontr_lambda_0.3/last_checkpoint.pt"
+    base_model: "ViT-B/32"
+    force_openclip: true
+
+  - name: "CS-CLIP λ_tc=0.5"
+    csv_filename: "03-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_ltc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_textcontr_lambda_0.5.csv"
+    checkpoint_type: "external"
+    checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_ltc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_textcontr_lambda_0.5/last_checkpoint.pt"
+    base_model: "ViT-B/32"
+    force_openclip: true
+
+  # ============================================================================
+  # Combined Rank + Align Loss Ablation
+  # Grid search over different combinations of λ_rank and λ_align
+  # ============================================================================
+
+  - name: "CS-CLIP λ_r=0.1 λ_a=0.2"
+    csv_filename: "03-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_la0.2_lr0.1_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_rank0.1_align0.2.csv"
+    checkpoint_type: "external"
+    checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_la0.2_lr0.1_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_rank0.1_align0.2/last_checkpoint.pt"
+    base_model: "ViT-B/32"
+    force_openclip: true
+
+  - name: "CS-CLIP λ_r=0.1 λ_a=0.3"
+    csv_filename: "03-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_la0.3_lr0.1_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_rank0.1_align0.3.csv"
+    checkpoint_type: "external"
+    checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_la0.3_lr0.1_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_rank0.1_align0.3/last_checkpoint.pt"
+    base_model: "ViT-B/32"
+    force_openclip: true
+
+  - name: "CS-CLIP λ_r=0.2 λ_a=0.1"
+    csv_filename: "03-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_la0.1_lr0.2_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_rank0.2_align0.1.csv"
+    checkpoint_type: "external"
+    checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_la0.1_lr0.2_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_rank0.2_align0.1/last_checkpoint.pt"
+    base_model: "ViT-B/32"
+    force_openclip: true
+
+  - name: "CS-CLIP λ_r=0.2 λ_a=0.2"
+    csv_filename: "03-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_la0.2_lr0.2_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_rank0.2_align0.2.csv"
+    checkpoint_type: "external"
+    checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_la0.2_lr0.2_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_rank0.2_align0.2/last_checkpoint.pt"
+    base_model: "ViT-B/32"
+    force_openclip: true
+
+  - name: "CS-CLIP λ_r=0.2 λ_a=0.3"
+    csv_filename: "03-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_la0.3_lr0.2_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_rank0.2_align0.3.csv"
+    checkpoint_type: "external"
+    checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_la0.3_lr0.2_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_rank0.2_align0.3/last_checkpoint.pt"
+    base_model: "ViT-B/32"
+    force_openclip: true
+
+  - name: "CS-CLIP λ_r=0.3 λ_a=0.1"
+    csv_filename: "03-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_la0.1_lr0.3_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_rank0.3_align0.1.csv"
+    checkpoint_type: "external"
+    checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_la0.1_lr0.3_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_rank0.3_align0.1/last_checkpoint.pt"
+    base_model: "ViT-B/32"
+    force_openclip: true
+
+  - name: "CS-CLIP λ_r=0.3 λ_a=0.2"
+    csv_filename: "03-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_la0.2_lr0.3_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_rank0.3_align0.2.csv"
+    checkpoint_type: "external"
+    checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_la0.2_lr0.3_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_rank0.3_align0.2/last_checkpoint.pt"
+    base_model: "ViT-B/32"
+    force_openclip: true
+
+  - name: "CS-CLIP λ_r=0.3 λ_a=0.3"
+    csv_filename: "03-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_la0.3_lr0.3_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_rank0.3_align0.3.csv"
+    checkpoint_type: "external"
+    checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_la0.3_lr0.3_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_rank0.3_align0.3/last_checkpoint.pt"
+    base_model: "ViT-B/32"
+    force_openclip: true
+
+# Only evaluate VL_CheckList
+default_datasets:
+  - "VL_CheckList"
+

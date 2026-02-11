@@ -1,0 +1,8 @@
+[
+    {
+      "run_id": "csclip-negclip-hard-new",
+      "label": "CS-CLIP",
+      "csv_path": "../evaluation/exp_csv/19-Dec_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.0_inplace1.0_swap1.0_csclip-negclip-hard-new_cleaned.csv",
+      "method_key": "cs-clip"
+    }
+]

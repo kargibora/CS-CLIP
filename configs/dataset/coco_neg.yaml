@@ -1,0 +1,34 @@
+# COCO dataset configuration with structured negatives
+# For training with COCO images and component-based positive/negative pairs
+name: "COCONeg"
+data_path: "./datasets"  # Base path where COCO images are located
+subset_name: "train"
+
+# Data splitting configuration (if needed)
+split_type: "object"
+val_ratio: 0.1
+test_ratio: 0.0
+
+# COCO-specific dataset kwargs
+dataset_kwargs:
+  # Path to folder containing COCO JSON files with structured negatives
+  json_folder: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/swap_pos_json/coco/"
+  
+  # Root path for images (image_path in JSON is relative to this)
+  image_root: "."
+  
+  # Multi-caption mode settings
+  num_component_captions: 3  # Number of component captions per sample (0 = disabled)
+  
+  # Structured sampling settings
+  use_structured_sampling: true
+  structured_relation_prob: 0.5  # Probability of relation vs component pairs
+  use_context_in_component_pairs: true  # Include context components in pairs
+  binding_negative_prob: 0.0  # Probability of sampling binding negatives (noun swaps)
+  
+  # Negative generation settings
+  swap_negative_prob: 0.5  # Probability of using swap_negatives for original caption
+  inplace_replacement_prob: 0.7  # Probability of inplace vs relation replacement
+  
+  # Skip negatives (for losses that don't use them)
+  skip_negatives: false

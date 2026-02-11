@@ -1,0 +1,104 @@
+[
+  {
+    "run_id": "negclip_external_coco",
+    "label": "NegCLIP (COCO)",
+    "csv_path": "../evaluation/negclip_coco_vitb32.csv",
+    "method_key": "negclip"
+  },
+  {
+    "run_id": "ce_clip",
+    "label": "CE CLIP",
+    "csv_path": "../evaluation/ce_clip_vitb32.csv",
+    "method_key": "ce-clip"
+  },
+  {
+    "run_id": "con_clip",
+    "label": "CON CLIP",
+    "csv_path": "../evaluation/con_clip_vitb32.csv",
+    "method_key": "con-clip"
+  },
+  {
+    "run_id": "fsc_clip_cc3m",
+    "label": "FSC CLIP (CC3M)",
+    "csv_path": "../evaluation/fsc_clip_cc3m_vitb32.csv",
+    "method_key": "fsc-clip"
+  },
+  {
+    "run_id": "fsc_clip_coco",
+    "label": "FSC CLIP (COCO)",
+    "csv_path": "../evaluation/fsc_clip_coco_vitb32.csv",
+    "method_key": "fsc-clip"
+  },
+  {
+    "run_id": "fsc_clip_laioncoco",
+    "label": "FSC CLIP (LAION+COCO)",
+    "csv_path": "../evaluation/fsc_clip_laioncoco_vitb32.csv",
+    "method_key": "fsc-clip"
+  },
+  {
+    "run_id": "clic_cogvlm_laion",
+    "label": "CLIC CogVLM (LAION)",
+    "csv_path": "../evaluation/clic_cogvlm_vitb32_laion.csv",
+    "method_key": "clic"
+  },
+  {
+    "run_id": "clic_cogvlm_pixpr_redcaps",
+    "label": "CLIC CogVLM (PixPR RedCaps)",
+    "csv_path": "../evaluation/clic_cogvlm_vitb32_pixpr_redcaps.csv",
+    "method_key": "clic"
+  },
+  {
+    "run_id": "readeclip_vitb32",
+    "label": "READCLIP",
+    "csv_path": "../evaluation/readclip_vitb32.csv",
+    "method_key": "read-clip"
+  },
+  {
+    "run_id": "tsvlc_vitb32",
+    "label": "TSVLC",
+    "csv_path": "../evaluation/tsvlc_vitb32.csv",
+    "method_key": "svlc"
+  },
+  {
+    "run_id": "tripletclip_cc12m",
+    "label": "TripletCLIP (CC12M)",
+    "csv_path": "../evaluation/tripletclip_cc12m_vitb12.csv",
+    "method_key": "tripletclip"
+  },
+  {
+    "run_id": "dac_vitb32_llm",
+    "label": "DAC (LLM)",
+    "csv_path": "../evaluation/dac_vitb32_llm.csv",
+    "method_key": "dac"
+  },
+  {
+    "run_id": "dac_vitb32_sam",
+    "label": "DAC (SAM)",
+    "csv_path": "../evaluation/dac_vitb32_sam.csv",
+    "method_key": "dac"
+  },
+  {
+    "run_id": "laclip_cc12m_vitb32",
+    "label": "LaCLIP (CC12M)",
+    "csv_path": "../evaluation/laclip_cc12m_vitb32.csv",
+    "method_key": "laclip"
+  },
+  {
+    "run_id": "degla_vitb32",
+    "label": "DeGLA",
+    "csv_path": "../evaluation/degla_vitb32.csv",
+    "method_key": "degla"
+  },
+  {
+    "run_id": "clove_vitb32",
+    "label": "CLoVe",
+    "csv_path": "../evaluation/clove_vitb32_laioncoco.csv",
+    "method_key": "clove"
+  },
+  {
+    "run_id": "labclip_vitb32",
+    "label": "LabCLIP",
+    "csv_path": "../evaluation/labclip_vitb32.csv",
+    "method_key": "labclip"
+  }
+]

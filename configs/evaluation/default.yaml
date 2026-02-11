@@ -1,0 +1,10 @@
+# Evaluation configuration
+# Controls evaluation frequency and what gets evaluated
+
+# Initial evaluation before training
+initial_evaluate: false # Run evaluation before any training
+
+# Dataset evaluation during training
+enable_dataset_eval: false     # Enable evaluation on benchmark datasets during training
+dataset_eval_datasets: []      # List of datasets to evaluate on (e.g., VALSE BLA ColorFoil)
+dataset_eval_csv_path: "dataset_evaluation_results.csv"  # Path to save CSV results

@@ -1,0 +1,49 @@
+[
+  "$ref:clip_baseline",
+  "$ref:csclip_baseline",
+  "$ref:ce_clip",
+  "$ref:fsc_clip_coco",
+  "$ref:clic_cogvlm_laion",
+  "$ref:readeclip",
+  {
+    "run_id": "ablation_wd_1e-3",
+    "label": "WD=1e-3",
+    "csv_path": "../evaluation/exp_csv/01-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-3_neg_rel0.2_inplace1.0_swap1.0_ablation_wd_1e-3.csv",
+    "method_key": "ablation",
+    "ablation_group": "weight_decay",
+    "ablation_value": 0.001
+  },
+  {
+    "run_id": "ablation_wd_5e-3",
+    "label": "WD=5e-3",
+    "csv_path": "../evaluation/exp_csv/01-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd5e-3_neg_rel0.2_inplace1.0_swap1.0_ablation_wd_5e-3.csv",
+    "method_key": "ablation",
+    "ablation_group": "weight_decay",
+    "ablation_value": 0.005
+  },
+  {
+    "run_id": "ablation_wd_1e-2",
+    "label": "WD=1e-2 (default)",
+    "csv_path": "../evaluation/exp_csv/01-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_wd_1e-2.csv",
+    "method_key": "ablation",
+    "ablation_group": "weight_decay",
+    "ablation_value": 0.01,
+    "is_main": true
+  },
+  {
+    "run_id": "ablation_wd_2e-2",
+    "label": "WD=2e-2",
+    "csv_path": "../evaluation/exp_csv/01-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd2e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_wd_2e-2.csv",
+    "method_key": "ablation",
+    "ablation_group": "weight_decay",
+    "ablation_value": 0.02
+  },
+  {
+    "run_id": "ablation_wd_5e-2",
+    "label": "WD=5e-2",
+    "csv_path": "../evaluation/exp_csv/01-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd5e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_wd_5e-2.csv",
+    "method_key": "ablation",
+    "ablation_group": "weight_decay",
+    "ablation_value": 0.05
+  }
+]

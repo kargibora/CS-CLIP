@@ -1,0 +1,27 @@
+{
+  "dataset": "COCO",
+  "table": "halftruth_comp_rel_summary",
+  "metrics": {
+    "Comp_FoilRate": { "definition": "P[s(I,HT) > s(I,ST)] on compositional/entity foils", "direction": "lower_better", "unit": "percent" },
+    "Rel_FoilRate": { "definition": "P[s(I,HT) > s(I,ST)] on relation foils", "direction": "lower_better", "unit": "percent" }
+  },
+  "counts": { "Comp_N": 11420, "Rel_N": 14186 },
+  "models": [
+    { "model": "CS-CLIP", "group": "ours", "Comp_FoilRate": 24.6, "Rel_FoilRate": 34.8 },
+    { "model": "FSC-CLIP (CC3M)", "group": "method", "Comp_FoilRate": 22.2, "Rel_FoilRate": 42.6 },
+    { "model": "Con-CLIP", "group": "method", "Comp_FoilRate": 23.9, "Rel_FoilRate": 46.1 },
+    { "model": "FSC-CLIP (COCO)", "group": "method", "Comp_FoilRate": 25.0, "Rel_FoilRate": 46.1 },
+    { "model": "FSC-CLIP (LAION+COCO)", "group": "method", "Comp_FoilRate": 29.7, "Rel_FoilRate": 50.3 },
+    { "model": "NegCLIP", "group": "baseline", "Comp_FoilRate": 30.2, "Rel_FoilRate": 45.5 },
+    { "model": "ReadCLIP", "group": "method", "Comp_FoilRate": 30.6, "Rel_FoilRate": 40.8 },
+    { "model": "DEGLA", "group": "method", "Comp_FoilRate": 31.7, "Rel_FoilRate": 56.4 },
+    { "model": "LA-CLIP", "group": "baseline", "Comp_FoilRate": 33.3, "Rel_FoilRate": 48.9 },
+    { "model": "CLIC (LAION)", "group": "method", "Comp_FoilRate": 38.5, "Rel_FoilRate": 66.0 },
+    { "model": "DAC (LLM)", "group": "method", "Comp_FoilRate": 38.7, "Rel_FoilRate": 58.7 },
+    { "model": "TripletCLIP", "group": "baseline", "Comp_FoilRate": 40.0, "Rel_FoilRate": 58.7 },
+    { "model": "CE-CLIP", "group": "method", "Comp_FoilRate": 40.7, "Rel_FoilRate": 50.2 },
+    { "model": "DAC (SAM)", "group": "method", "Comp_FoilRate": 41.1, "Rel_FoilRate": 59.0 },
+    { "model": "CLIC (RedCaps)", "group": "method", "Comp_FoilRate": 42.5, "Rel_FoilRate": 64.9 },
+    { "model": "CLIP", "group": "baseline", "Comp_FoilRate": 46.7, "Rel_FoilRate": 63.1 }
+  ]
+}

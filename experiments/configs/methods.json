@@ -1,0 +1,206 @@
+{
+  "methods": {
+    "clip-baseline": {
+      "paper_name": "CLIP",
+      "is_baseline": true,
+      "is_ours": false,
+      "is_pretrained": false,
+      "pretrain": true,
+      "finetune": false,
+      "arch_modified": false,
+      "negs": "None",
+      "used_datasets": [],
+      "num_samples_approx": null,
+      "data_quality": null
+    },
+
+    "negclip": {
+      "paper_name": "NegCLIP",
+      "is_baseline": false,
+      "is_ours": false,
+      "is_pretrained": false,
+      "pretrain": false,
+      "finetune": true,
+      "arch_modified": false,
+      "negs": "Both",
+      "used_datasets": ["MSCOCO"],
+      "num_samples_approx": "~565k",
+      "data_quality": "Raw"
+    },
+
+    "con-clip": {
+      "paper_name": "CoN-CLIP",
+      "is_baseline": false,
+      "is_ours": false,
+      "is_pretrained": false,
+      "pretrain": false,
+      "finetune": true,
+      "arch_modified": false,
+      "negs": "Both",
+      "used_datasets": ["CC-Neg", "MSCOCO"],
+      "num_samples_approx": "~0.23M",
+      "data_quality": "Clean"
+    },
+
+    "tripletclip": {
+      "paper_name": "TripletCLIP",
+      "is_baseline": false,
+      "is_ours": false,
+      "is_pretrained": true,
+      "pretrain": true,
+      "finetune": false,
+      "arch_modified": false,
+      "negs": "Both",
+      "used_datasets": ["CC3M", "CC12M"],
+      "num_samples_approx": "~12M",
+      "data_quality": "Synthetic"
+    },
+    "laclip": {
+      "paper_name": "LaCLIP",
+      "is_baseline": false,
+      "is_ours": false,
+      "is_pretrained": true,
+      "pretrain": true,
+      "finetune": false,
+      "arch_modified": false,
+      "negs": "None",
+      "used_datasets": ["CC3M", "CC12M"],
+      "num_samples_approx": "~12M",
+      "data_quality": "Synthetic"
+    },
+    "dac": {
+      "paper_name": "DAC",
+      "is_baseline": false,
+      "is_ours": false,
+      "is_pretrained": false,
+      "pretrain": false,
+      "finetune": true,
+      "arch_modified": false,
+      "negs": "Text",
+      "used_datasets": ["CC3M", "CC12M"],
+      "num_samples_approx": "~12M",
+      "data_quality": "Synthetic"
+    },
+    "ce-clip": {
+      "paper_name": "CE-CLIP",
+      "is_baseline": false,
+      "is_ours": false,
+      "is_pretrained": false,
+      "pretrain": false,
+      "finetune": true,
+      "arch_modified": false,
+      "negs": "Text",
+      "used_datasets": ["MSCOCO"],
+      "num_samples_approx": "~118k",
+      "data_quality": "Clean"
+    },
+
+    "clic": {
+      "paper_name": "CLIC",
+      "is_baseline": false,
+      "is_ours": false,
+      "is_pretrained": false,
+      "pretrain": false,
+      "finetune": true,
+      "arch_modified": false,
+      "negs": "Both",
+      "used_datasets": ["LAION", "RedCaps", "CC12M", "MSCOCO"],
+      "num_samples_approx": "~1M–1.2M",
+      "data_quality": "Synthetic"
+    },
+
+    "read-clip": {
+      "paper_name": "READ-CLIP",
+      "is_baseline": false,
+      "is_ours": false,
+      "is_pretrained": false,
+      "pretrain": false,
+      "finetune": true,
+      "arch_modified": false,
+      "negs": "None (Aux. Obj.)",
+      "used_datasets": ["MSCOCO"],
+      "num_samples_approx": "~100k",
+      "data_quality": "Synthetic"
+    },
+
+    "fsc-clip": {
+      "paper_name": "FSC-CLIP",
+      "is_baseline": false,
+      "is_ours": false,
+      "is_pretrained": false,
+      "pretrain": false,
+      "finetune": true,
+      "arch_modified": false,
+      "negs": "Text",
+      "used_datasets": ["MSCOCO", "CC3M", "LAION-COCO"],
+      "num_samples_approx": "~100k / each",
+      "data_quality": "Synthetic"
+    },
+
+    "svlc": {
+      "paper_name": "SVLC / TSVLC",
+      "is_baseline": false,
+      "is_ours": false,
+      "is_pretrained": false,
+      "pretrain": true,
+      "finetune": true,
+      "arch_modified": false,
+      "negs": "Text",
+      "used_datasets": ["CC3M", "LAION-400M"],
+      "num_samples_approx": "~3–400M",
+      "data_quality": "Clean"
+    },
+    "degla": {
+      "paper_name": "DeGLA",
+      "is_baseline": false,
+      "is_ours": false,
+      "is_pretrained": false,
+      "pretrain": false,
+      "finetune": true,
+      "arch_modified": false,
+      "negs": "Both",
+      "used_datasets": ["MSCOCO", "CC3M"],
+      "num_samples_approx": "~2M",
+      "data_quality": "Synthetic"
+    },
+    "clove": {
+      "paper_name": "CLoVe",
+      "is_baseline": false,
+      "is_ours": false,
+      "is_pretrained": false,
+      "pretrain": false,
+      "finetune": true,
+      "arch_modified": false,
+      "negs": "Text",
+      "used_datasets": ["LAION-COCO"],
+      "num_samples_approx": "~600M",
+      "data_quality": "Synthetic"
+    },
+    "cs-clip": {
+      "paper_name": "CS-CLIP (Ours)",
+      "is_baseline": false,
+      "is_ours": true,
+      "is_pretrained": false,
+      "pretrain": false,
+      "finetune": true,
+      "arch_modified": false,
+      "negs": "Text",
+      "used_datasets": ["MSCOCO"],
+      "num_samples_approx": "~565k",
+      "data_quality": "Raw"
+    },
+    "labclip": {
+      "paper_name": "LabCLIP",
+      "is_baseline": false,
+      "is_ours": false,
+      "is_pretrained": false,
+      "pretrain": false,
+      "finetune": true,
+      "arch_modified": true,
+      "negs": "Text",
+      "used_datasets": ["MSCOCO"],
+      "num_samples_approx": "~565k",
+      "data_quality": "Raw"
+    }
+  }
+}

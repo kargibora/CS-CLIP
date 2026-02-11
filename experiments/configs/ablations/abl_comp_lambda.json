@@ -1,0 +1,49 @@
+[
+  "$ref:clip_baseline",
+  "$ref:csclip_baseline",
+  "$ref:ce_clip",
+  "$ref:fsc_clip_coco",
+  "$ref:clic_cogvlm_laion",
+  "$ref:readeclip",
+  {
+    "run_id": "ablation_comp_lambda_0.1",
+    "label": "λ_comp=0.1",
+    "csv_path": "../evaluation/exp_csv/03-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.1_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_comp_lambda_0.1.csv",
+    "method_key": "ablation",
+    "ablation_group": "comp_lambda",
+    "ablation_value": 0.1
+  },
+  {
+    "run_id": "ablation_comp_lambda_0.25",
+    "label": "λ_comp=0.25",
+    "csv_path": "../evaluation/exp_csv/03-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.25_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_comp_lambda_0.25.csv",
+    "method_key": "ablation",
+    "ablation_group": "comp_lambda",
+    "ablation_value": 0.25
+  },
+  {
+    "run_id": "ablation_comp_lambda_0.5",
+    "label": "λ_comp=0.5 (default)",
+    "csv_path": "../evaluation/exp_csv/04-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_comp_lambda_0.5.csv",
+    "method_key": "ablation",
+    "ablation_group": "comp_lambda",
+    "ablation_value": 0.5,
+    "is_main": true
+  },
+  {
+    "run_id": "ablation_comp_lambda_0.75",
+    "label": "λ_comp=0.75",
+    "csv_path": "../evaluation/exp_csv/04-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.75_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_comp_lambda_0.75.csv",
+    "method_key": "ablation",
+    "ablation_group": "comp_lambda",
+    "ablation_value": 0.75
+  },
+  {
+    "run_id": "ablation_comp_lambda_1.0",
+    "label": "λ_comp=1.0",
+    "csv_path": "../evaluation/exp_csv/04-Jan_coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc1.0_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.2_inplace1.0_swap1.0_ablation_comp_lambda_1.0.csv",
+    "method_key": "ablation",
+    "ablation_group": "comp_lambda",
+    "ablation_value": 1.0
+  }
+]

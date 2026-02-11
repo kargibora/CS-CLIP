@@ -1,0 +1,37 @@
+\begin{table}[t]
+  \centering
+  \scriptsize
+  \caption{Capability-wise performance (rows=models, cols=capabilities).}
+  \label{tab:caps_models_rows}
+  \begin{adjustbox}{max width=\textwidth}
+  \setlength{\tabcolsep}{2pt}
+  \begin{tabular}{p{5.0cm}ccccccc}
+    \toprule
+    Model & Attribute Binding & Attribute Recognition & Existence \& Negation & Object \& Role & Quantitative & Relations & Avg \\
+    \midrule
+    CLIP & \underline{47.5} & \underline{9.6} & \underline{31.5} & \underline{24.2} & \underline{35.8} & \underline{15.1} & \underline{27.3} \\
+    \midrule
+    LaCLIP (CC12M) & 33.6 & 4.4 & 30.9 & 14.1 & 25.8 & 10.4 & 19.9 \\
+    TripletCLIP (CC12M) & 39.5 & 9.6 & 31.6 & 19.6 & 26.8 & 14.3 & 23.6 \\
+    \midrule
+    CE CLIP & 48.8 & 5.9 & 31.3 & 22.7 & 36.9 & 12.9 & 26.4 \\
+    CLIC CogVLM (LAION) & 46.4 & 5.2 & 31.4 & 21.3 & 31.5 & 11.9 & 24.6 \\
+    CLIC CogVLM (PixPR RedCaps) & 45.1 & \textbf{10.4} & 31.4 & 24.1 & 30.8 & 15.3 & 26.2 \\
+    CLoVe & 40.4 & 3.7 & 31.7 & 15.5 & 34.5 & 11.2 & 22.8 \\
+    CON CLIP & 44.0 & 10.4 & \textbf{38.7} & 23.9 & 30.0 & 15.2 & 27.0 \\
+    DAC (LLM) & 45.1 & 9.6 & 31.5 & 23.5 & 30.3 & 14.8 & 25.8 \\
+    DAC (SAM) & 45.2 & 8.1 & 31.7 & 22.2 & 30.1 & 13.8 & 25.2 \\
+    DeGLA & 48.6 & 7.4 & 31.2 & 23.0 & 35.7 & 13.5 & 26.6 \\
+    FSC CLIP (CC3M) & 49.0 & 6.7 & 31.4 & 22.7 & 38.0 & 13.2 & 26.8 \\
+    FSC CLIP (COCO) & \textbf{50.7} & 7.4 & 31.4 & 24.2 & 38.5 & 13.8 & 27.6 \\
+    FSC CLIP (LAION+COCO) & 48.4 & 4.4 & 31.5 & 21.3 & 36.8 & 11.6 & 25.7 \\
+    NegCLIP (COCO) & 48.4 & 10.4 & 31.3 & 24.6 & \textbf{38.5} & \textbf{15.8} & \textbf{28.1} \\
+    READCLIP & 50.0 & 4.4 & 31.2 & 21.8 & 37.0 & 11.7 & 26.0 \\
+    TSVLC & 44.6 & 6.7 & 31.7 & 21.7 & 31.3 & 12.7 & 24.8 \\
+    \midrule
+    CS-CLIP & \emph{49.7} & \emph{9.6} & \emph{31.9} & \textbf{\emph{25.1}} & \emph{35.5} & \emph{14.9} & \emph{27.8} \\
+    CS-CLIP (w/o Negatives) & \emph{49.2} & \emph{6.7} & \emph{32.2} & \emph{22.9} & \emph{36.0} & \emph{13.1} & \emph{26.7} \\
+    \bottomrule
+  \end{tabular}
+  \end{adjustbox}
+\end{table}

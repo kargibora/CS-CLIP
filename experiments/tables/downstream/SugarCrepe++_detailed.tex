@@ -1,0 +1,38 @@
+\begin{table}[t]
+  \centering
+  \scriptsize
+  \caption{SugarCrepe++ detailed compositional results (text_contrastive_accuracy).}
+  \label{tab:SugarCrepe++_detailed}
+  \begin{adjustbox}{max width=\textwidth}
+  \setlength{\tabcolsep}{2pt}
+  \begin{tabular}{p{5cm}cccc|ccc|c}
+    \toprule
+    Method & \multicolumn{4}{c}{replace} & \multicolumn{3}{c}{swap} & Overall \\
+     & replace\_attribute & replace\_object & replace\_relation & Avg & swap\_atribute & swap\_object & Avg & Avg \\
+    \midrule
+    CLIP & \underline{71.4} & \underline{86.3} & \underline{51.8} & \underline{69.9} & \underline{48.8} & \underline{40.0} & \underline{44.4} & \underline{59.7} \\
+    \midrule
+    LaCLIP (CC12M) & 48.1 & 64.8 & 41.2 & 51.4 & 39.6 & 36.3 & 38.0 & 46.0 \\
+    TripletCLIP (CC12M) & 63.6 & 71.5 & 59.9 & 65.0 & 42.2 & 39.6 & 40.9 & 55.4 \\
+    \midrule
+    CE CLIP & 62.6 & 81.8 & 53.2 & 65.9 & 40.5 & 40.0 & 40.3 & 55.6 \\
+    CLIC CogVLM (LAION) & \textbf{75.8} & 90.0 & 61.0 & 75.6 & 61.0 & 61.6 & 61.3 & 69.9 \\
+    CLIC CogVLM (PixPR RedCaps) & 75.1 & 90.1 & \textbf{62.9} & 76.1 & 62.6 & 60.8 & 61.7 & \textbf{70.3} \\
+    CLoVe & 57.2 & 77.4 & 51.1 & 61.9 & 33.9 & 35.9 & 34.9 & 51.1 \\
+    CON CLIP & 66.6 & 88.0 & 52.1 & 68.9 & 52.0 & 44.1 & 48.0 & 60.6 \\
+    DAC (LLM) & 65.2 & 84.5 & 55.2 & 68.3 & 43.8 & 46.1 & 45.0 & 59.0 \\
+    DAC (SAM) & 65.1 & 85.1 & 55.4 & 68.5 & 44.4 & 47.3 & 45.9 & 59.5 \\
+    DeGLA & 67.4 & 84.3 & 51.4 & 67.7 & 55.7 & 55.5 & 55.6 & 62.8 \\
+    FSC CLIP (CC3M) & 66.1 & 85.4 & 54.8 & 68.7 & 48.5 & 43.7 & 46.1 & 59.7 \\
+    FSC CLIP (COCO) & 73.2 & 90.4 & 59.7 & 74.4 & 59.8 & 54.7 & 57.2 & 67.5 \\
+    FSC CLIP (LAION+COCO) & 65.2 & 85.4 & 54.8 & 68.5 & 50.8 & 43.3 & 47.0 & 59.9 \\
+    NegCLIP (COCO) & 67.3 & 87.0 & 53.1 & 69.1 & 55.0 & 51.4 & 53.2 & 62.7 \\
+    READCLIP & 72.2 & 90.1 & 57.5 & 73.3 & \textbf{66.2} & \textbf{62.9} & \textbf{64.5} & 69.8 \\
+    TSVLC & 65.7 & 86.8 & 56.1 & 69.6 & 45.3 & 45.7 & 45.5 & 59.9 \\
+    \midrule
+    CS-CLIP & \emph{74.2} & \emph{\textbf{91.7}} & \emph{62.4} & \emph{\textbf{76.1}} & \emph{56.5} & \emph{52.2} & \emph{54.4} & \emph{67.4} \\
+    CS-CLIP (w/o Negatives) & \emph{75.6} & \emph{91.3} & \emph{61.2} & \emph{76.1} & \emph{58.4} & \emph{40.8} & \emph{49.6} & \emph{65.5} \\
+    \bottomrule
+  \end{tabular}
+  \end{adjustbox}
+\end{table}
