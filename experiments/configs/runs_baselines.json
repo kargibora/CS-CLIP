@@ -1,8 +1,0 @@
-[
-  {
-    "run_id": "baseline_openai",
-    "label": "CLIP",
-    "csv_path": "../evaluation/00_baseline_openai_vitb32.csv",
-    "method_key": "clip-baseline"
-  }
-]
