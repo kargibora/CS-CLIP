@@ -99,8 +99,8 @@ Download our pre-trained checkpoints:
 
 | Model | Dataset | Download |
 |-------|---------|----------|
-| LabCLIP-ViT-B/32 | LAION400M | [link](#) |
-| LabCLIP-ViT-B/32 | COCO | [link](https://drive.google.com/file/d/14IBgBgKhCDhRHJfnDaFxsTo6ocoS4I6W/view?usp=drive_link) |
+| CS-CLIP-ViT-B/32 | LAION400M | [link](#) |
+| CS-CLIP-ViT-B/32 | COCO | [link](https://drive.google.com/file/d/14IBgBgKhCDhRHJfnDaFxsTo6ocoS4I6W/view?usp=drive_link) |
 
 **Loading a checkpoint:**
 
