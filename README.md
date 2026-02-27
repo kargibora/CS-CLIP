@@ -2,6 +2,15 @@
 
 This repository contains the implementation for training CLIP with component-supervised contrastive learning.
 
+## TODO
+
+- [x] Release initial codebase
+- [ ] Release pre-trained checkpoints
+- [ ] Release pre-extracted negatives (COCO, LAION)
+- [ ] Add evaluation scripts and benchmark reproduction
+- [ ] Add Hugging Face model integration
+- [ ] Detailed documentation for `neg_pipeline`
+
 ## Installation
 
 ```bash
