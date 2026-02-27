@@ -1,6 +1,6 @@
-# LabCLIP: CLIP is not a Bag-of-Words Unimodally
+# Half-Truths Break Similarity-Based Retrieval
 
-This repository contains the implementation for training CLIP with component-aware contrastive learning.
+This repository contains the implementation for training CLIP with component-supervised contrastive learning.
 
 ## Installation
 
@@ -135,10 +135,10 @@ model.load_state_dict(checkpoint)
 ## Citation
 
 ```bibtex
-@article{labclip2025,
-  title={CLIP is not a Bag-of-Words Unimodally},
+@article{csclip2026,
+  title={Half-Truths Break Similarity-Based Retrieval},
   author={...},
-  year={2025}
+  year={2026}
 }
 ```
 
