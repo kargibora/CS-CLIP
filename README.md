@@ -11,12 +11,6 @@ This repository contains the implementation for training CLIP with component-sup
 - [ ] Add Hugging Face model integration
 - [ ] Detailed documentation for `neg_pipeline`
 
-## Installation
-
-```bash
-pip install -r requirements.txt
-```
-
 ## Dataset Setup
 
 Download your datasets and place them under the `datasets/` folder following each dataset's official guide:
