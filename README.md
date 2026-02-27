@@ -1,3 +1,4 @@
+[WIP]
 # Half-Truths Break Similarity-Based Retrieval
 
 This repository contains the implementation for training CLIP with component-supervised contrastive learning.
@@ -145,6 +146,5 @@ model.load_state_dict(checkpoint)
 }
 ```
 
-## License
 
 [MIT License](LICENSE)
