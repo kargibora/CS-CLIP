@@ -4,7 +4,7 @@ This repository contains the implementation for training CLIP with component-sup
 
 ## TODO
 
-Currently this repo is in WIP and will be updated:
+Currently this repo is in WIP and will be updated for reproducability:
 - [x] Release initial codebase
 - [x] Release pre-trained checkpoints
 - [ ] Release better documentation for dataset installation & pipeline usage
