@@ -1,10 +1,10 @@
-[WIP]
 # Half-Truths Break Similarity-Based Retrieval
 
 This repository contains the implementation for training CLIP with component-supervised contrastive learning. 
 
 ## TODO
 
+Currently this repo is in WIP and will be updated:
 - [x] Release initial codebase
 - [x] Release pre-trained checkpoints
 - [ ] Release better documentation for dataset installation & pipeline usage
@@ -59,7 +59,6 @@ python -m neg_pipeline.main \
 - `--use_relational_extraction`: Extract components with spatial/relational information
 - `--use_component_negatives`: Generate negatives by modifying individual components
 - `--use_relational_negatives`: Generate negatives by modifying spatial relations
-- `--generate_positives`: Extract and reconstruct visual components
 
 ### Step 2: Train the Model
 
@@ -89,7 +88,6 @@ torchrun --nproc_per_node=4 align.py \
 - `alignment.ft_image`: Fine-tune image encoder
 - `alignment.ft_text`: Fine-tune text encoder
 - `loss.lambda_component`: Weight for component loss
-- `loss.lambda_negclip`: Weight for hard negative loss
 
 See `configs/` for available options.
 
@@ -99,7 +97,6 @@ Download our pre-trained checkpoints:
 
 | Model | Dataset | Download |
 |-------|---------|----------|
-| CS-CLIP-ViT-B/32 | LAION400M | [link](#) |
 | CS-CLIP-ViT-B/32 | COCO | [link](https://drive.google.com/file/d/14IBgBgKhCDhRHJfnDaFxsTo6ocoS4I6W/view?usp=drive_link) |
 
 **Loading a checkpoint:**
