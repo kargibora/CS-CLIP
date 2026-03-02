@@ -1,16 +1,15 @@
 [WIP]
 # Half-Truths Break Similarity-Based Retrieval
 
-This repository contains the implementation for training CLIP with component-supervised contrastive learning.
+This repository contains the implementation for training CLIP with component-supervised contrastive learning. 
 
 ## TODO
 
 - [x] Release initial codebase
-- [ ] Release pre-trained checkpoints
+- [x] Release pre-trained checkpoints
+- [ ] Release better documentation for dataset installation & pipeline usage
 - [ ] Release pre-extracted negatives (COCO, LAION)
 - [ ] Add evaluation scripts and benchmark reproduction
-- [ ] Add Hugging Face model integration
-- [ ] Detailed documentation for `neg_pipeline`
 
 ## Dataset Setup
 
@@ -139,10 +138,11 @@ model.load_state_dict(checkpoint)
 ## Citation
 
 ```bibtex
-@article{csclip2026,
-  title={Half-Truths Break Similarity-Based Retrieval},
-  author={...},
-  year={2026}
+@article{kargi2026halftruths,
+  title   = {Half-Truths Break Similarity-Based Retrieval},
+  author  = {Kargi, Bora and Uselis, Arnas and Oh, Seong Joon},
+  year    = {2026},
+  journal = {arXiv preprint arXiv:2602.23906},
 }
 ```
 
