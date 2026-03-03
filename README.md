@@ -12,6 +12,7 @@ When a text description is extended with an additional detail, image-text simila
 
 ## Coming Soon
 
+- [x] CS-CLIP COCO Checkpoint
 - [ ] Training and evaluation code
 - [ ] Unit extraction pipeline
 - [ ] Pre-extracted negatives (COCO, LAION)
