@@ -1,6 +1,0 @@
-external_checkpoints/*
-*__pycache__
-*.pt
-swap_pos_json/*
-*.csv
-datasets/*

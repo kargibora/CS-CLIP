@@ -1,8 +1,0 @@
-# Cache configuration
-# Cache folder settings
-cache_folder: "cache_temp"   # Base cache folder for all cached data
-
-# Embedding cache settings
-embedding_path: null            # Path to cache CLIP embeddings (image/text)
-embedding_batch_size: null     # Batch size for embedding computation
-recompute_cache: false         # Recompute CLIP embeddings cache
