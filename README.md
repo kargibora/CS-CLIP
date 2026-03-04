@@ -13,16 +13,24 @@ When a text description is extended with an additional detail, image-text simila
 ## Coming Soon
 
 - [x] CS-CLIP COCO Checkpoint
+- [x] Pre-extracted negatives
 - [ ] Training and evaluation code
 - [ ] Unit extraction pipeline
-- [ ] Pre-extracted negatives (COCO, LAION)
 - [ ] Dataset setup instructions
 
 ## Pre-trained Checkpoints
 
 | Model | Dataset | Download |
 |-------|---------|----------|
-| CS-CLIP-ViT-B/32 | COCO | [link](https://drive.google.com/file/d/14IBgBgKhCDhRHJfnDaFxsTo6ocoS4I6W/view?usp=drive_link) |
+| CS-CLIP-ViT-B/32 | MSCOCO | [link](https://drive.google.com/file/d/14IBgBgKhCDhRHJfnDaFxsTo6ocoS4I6W/view?usp=drive_link) |
+
+## Datasets
+
+Pre-extracted caption units (entities and relations) used for CS-CLIP experiments.
+
+| Dataset | Description | Download |
+|--------|-------------|----------|
+| MSCOCO | Caption samples with extracted entities and relations | [link](https://drive.google.com/file/d/1DpthIA-5zT_m1GKfqvHUWWH_z2XyEOMP/view?usp=drive_link) |
 
 ## Citation
 
