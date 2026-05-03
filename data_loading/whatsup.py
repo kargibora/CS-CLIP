@@ -26,10 +26,10 @@ from utils.align import (
     compute_image_embeddings_intermediate_batch
 )
 
-# TODO: Set these paths to relative
-ARO_ROOT = "/mnt/lustre/work/oh/owl336/thesis/CLIP-not-BoW-unimodally/datasets/WhatsUp"
-COCO_ROOT = "/mnt/lustre/work/oh/owl336/thesis/CLIP-not-BoW-unimodally/datasets/WhatsUp"
-FLICKR_ROOT = "/mnt/lustre/work/oh/owl336/thesis/CLIP-not-BoW-unimodally/datasets/WhatsUp"
+WHATSUP_ROOT = os.environ.get("WHATSUP_ROOT", "./datasets/WhatsUp")
+ARO_ROOT = WHATSUP_ROOT
+COCO_ROOT = WHATSUP_ROOT
+FLICKR_ROOT = WHATSUP_ROOT
 
 class Controlled_Images(Dataset):
     def __init__(self, 

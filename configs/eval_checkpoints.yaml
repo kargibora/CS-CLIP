@@ -163,7 +163,7 @@ checkpoints:
   # - name: "CS-CLIP"
   #   csv_filename: "cs_clip_negclip_vitb32.csv"
   #   checkpoint_type: "external"
-  #   checkpoint_path: "/mnt/lustre/work/oh/owl336/LabCLIP_v2/CLIP-not-BoW-unimodally/checkpoints/coco_with_components_negatives_structured_rel1.0_either_max2_lf1.0_lc0.5_negclip_hard_lr5ee-6_wd1e-2_neg_rel0.0_inplace1.0_swap1.0_csclip-negclip-hard-new/last_checkpoint.pt"
+  #   checkpoint_path: "checkpoints/example_run/last_checkpoint.pt"
   #   base_model: "ViT-B/32"
   #   force_openclip: true  # Force loading from OpenCLIP instead of OpenAI CLIP
 
@@ -171,7 +171,7 @@ checkpoints:
   # - name: "LabCLIP"
   #   csv_filename: "labclip_vitb32.csv"
   #   checkpoint_type: "projection"
-  #   checkpoint_path: "/mnt/lustre/work/oh/owl972/cache/coco_alignment_neg_B32.pt"
+  #   checkpoint_path: "external_checkpoints/labclip/example.pt"
   #   base_model: "ViT-B/32"
   #   # force_openclip: true  # Force loading from OpenCLIP instead of OpenAI CLIP
 
