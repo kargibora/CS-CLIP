@@ -1,0 +1,28 @@
+# SGD optimizer configuration
+type: "sgd"
+learning_rate: 0.1
+lr_scaling: "linear"    # SGD often benefits from linear scaling
+scheduler: "step"
+
+# SGD-specific parameters
+optimizer_kwargs:
+  momentum: 0.9
+  weight_decay: 1e-4
+  dampening: 0.0
+
+
+# Scheduler-specific settings
+scheduler_kwargs:
+  # For step scheduler
+  step_size: 30
+  gamma: 0.1
+  
+  # For cosine scheduler
+  cosine_t_max: null
+  cosine_eta_min: 0
+  
+  # For linear scheduler
+  warmup_ratio: 0.1       # SGD often needs more warmup
+
+# Fine-tuning specific settings  
+ft_start_epoch: 0

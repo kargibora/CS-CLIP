@@ -1,0 +1,17 @@
+batch_size: 128
+epochs: 5
+val_ratio: 0.2
+eval_n: 1
+
+force_float32: true
+use_amp: true
+grad_clip_norm: 1.0
+
+save_path: "./checkpoints"
+save_every_k_steps: null
+load_checkpoint: null
+use_best_model: true
+
+name: ""
+seed: 42
+test: false

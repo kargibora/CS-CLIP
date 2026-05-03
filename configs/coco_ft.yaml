@@ -1,0 +1,45 @@
+# @package _global_
+
+defaults:
+  - dataset: coco_neg
+  - training: default
+  - optimizer: adamw_ft
+  - model: vit_b32_openai
+  - head: bimodal
+  - alignment: default
+  - loss: multi_caption
+  - dist: torchrun
+  - cache: default
+  - evaluation: default
+  - _self_
+
+alignment:
+  alignment_type: "FT"
+  align_image: false
+  align_text: false
+  ft_image: true
+  ft_text: true
+
+training:
+  batch_size: 128
+  epochs: 5
+
+optimizer:
+  type: "adamw"
+  learning_rate: 5e-6
+  lr_scaling: "none"
+  scheduler: "cosine"
+
+dist:
+  num_workers: 4
+  pin_memory: true
+
+evaluation:
+  enable_dataset_eval: false
+  dataset_eval_csv_path: "evaluation.csv"
+
+hydra:
+  run:
+    dir: outputs/coco_ft/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  job:
+    name: coco_ft_training

@@ -1,0 +1,20 @@
+name: "COCONeg"
+data_path: "./datasets"
+subset_name: "train"
+
+split_type: "object"
+val_ratio: 0.001
+test_ratio: 0.0
+
+dataset_kwargs:
+  json_folder: "???"
+  image_root: "???"
+
+  num_entity_captions: 2
+  use_structured_sampling: true
+  structured_relation_prob: 1.0
+  use_context_in_entity_pairs: true
+
+  swap_negative_prob: 1.0
+  inplace_replacement_prob: 1.0
+  skip_negatives: false

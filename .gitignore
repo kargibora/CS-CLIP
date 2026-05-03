@@ -1,0 +1,14 @@
+external_checkpoints/*
+*__pycache__
+*.pt
+swap_pos_json/*
+*.csv
+datasets/*
+experiments/*
+checkpoints/
+outputs/
+wandb/
+temp/
+evaluation_results/
+.pytest_cache/
+__pycache__/

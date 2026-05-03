@@ -1,0 +1,17 @@
+# Dataset configuration
+# Specify the dataset to use for training/evaluation
+name: "COCONeg"
+choices: [
+  "SPEC_I2T", "ControlledImages", "CC3M", "VG_Attribution", "VG_Relation", 
+  "COCO_Order", "Flickr30k_Order", "VisMin", "SugarCrepe", "SugarCrepe_PP",
+  "Winoground", "BLA", "VALSE", "VL_CheckList", "ColorSwap",
+  "COCO_Counterfactuals", "COCONeg", "COLA", "NegBench", "CLIPBenchmark", "SVOProbes", "MMVP"
+]
+
+# Dataset paths and metadata
+data_path: null  # Path to the dataset root folder
+subset_name: null  # Name of the subset (e.g., for COCO, VG, etc.)
+
+# Data splitting configuration
+split_type: "object"  # Data split strategy: "object", "random", "variation"
+val_ratio: 0.2  # Fraction of data to use for validation split

@@ -1,0 +1,22 @@
+loss_type: "multi_caption"
+
+lambda_full: 1.0
+use_negatives_full: true
+
+lambda_entities: 0.5
+entity_loss_type: "negclip_hard"
+
+lambda_alignment: 0.0
+alignment_loss_type: "margin"
+alignment_margin: 0.2
+
+lambda_rank: 0.0
+rank_margin: 0.1
+rank_reduction: "mean"
+
+lambda_text_contrastive: 0.0
+text_contrastive_margin: 0.2
+
+lambda_paraphrase: 0.0
+
+contrastive_mode: "with_entities_negatives"
