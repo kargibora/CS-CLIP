@@ -11,7 +11,7 @@ When a text description is extended with an additional detail, image-text simila
 - [x] CS-CLIP COCO Checkpoint
 - [x] Pre-extracted negatives
 - [x] Training and evaluation code
-- [ ] Unit extraction pipeline
+- [x] Unit extraction pipeline
 - [ ] Dataset setup instructions
 
 ## Pre-trained Checkpoints
@@ -30,12 +30,13 @@ Pre-extracted caption units (entities and relations) used for CS-CLIP training.
 
 ---
 
-The public pipeline has two steps:
+The public pipeline has three steps:
 
-1. Train CLIP using prepared entity/relation JSON files.
-2. Evaluate saved checkpoints on installed benchmark datasets.
+1. **(Optional)** Generate entity/relation unit JSON files from captions using the unit pipeline.
+2. Train CLIP using prepared entity/relation JSON files.
+3. Evaluate saved checkpoints on installed benchmark datasets.
 
-The LLM data-generation pipeline is not required for training or evaluation.
+Pre-extracted JSON files for MSCOCO are available for download above, so step 1 is only needed if you want to generate your own data.
 
 ## Setup
 
@@ -87,6 +88,54 @@ unzip train2014.zip
 unzip val2014.zip
 unzip val2017.zip
 ```
+
+## Unit Pipeline
+
+The unit pipeline extracts entity and relation units from captions and generates minimally edited foils for each unit. It requires a GPU and [vLLM](https://github.com/vllm-project/vllm).
+
+**Required arguments:**
+
+| Argument | Description |
+|---|---|
+| `--coco_karpathy` | Path to the COCO Karpathy split JSON (`dataset_coco.json`) |
+| `--coco_images_root` | Root directory containing COCO image folders (`train2014/`, `val2014/`, etc.) |
+| `--output` | Output path for the structured negative JSON |
+
+**Common optional arguments:**
+
+| Argument | Default | Description |
+|---|---|---|
+| `--coco_split` | all splits | Filter to a specific split: `train`, `val`, `test`, or `restval` |
+| `--subset START END` | all | Process only captions `[START, END)` — useful for testing |
+| `--positives_output` | — | Also save a JSON of extracted positives (entities + relations, no foils) |
+| `--llm_name` | `Qwen/Qwen3-14B-AWQ` | HuggingFace model name for the LLM |
+| `--llm_batch` | `256` | Batch size passed to vLLM |
+| `--n_neg_per_entity` | `2` | Number of foils to generate per entity unit |
+| `--n_relational_negatives` | `3` | Number of foils to generate per relation unit |
+
+**Example — smoke test on 5 captions:**
+
+```bash
+python cli.py \
+  --coco_karpathy datasets/COCO/dataset_coco.json \
+  --coco_images_root datasets/COCO \
+  --coco_split val \
+  --subset 0 5 \
+  --output /tmp/test_out.json
+```
+
+**Example — full val split:**
+
+```bash
+python cli.py \
+  --coco_karpathy datasets/COCO/dataset_coco.json \
+  --coco_images_root datasets/COCO \
+  --coco_split val \
+  --output neg_json/coco_val.json \
+  --positives_output pos_json/coco_val.json
+```
+
+The output JSON follows the training format described in the next section.
 
 ## Training JSON Format
 
