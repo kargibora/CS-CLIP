@@ -10,7 +10,7 @@ from omegaconf import OmegaConf
 from alignment.learning_alignment import train_model_multigpu_merged_batch
 from data_loading import build_dataset_from_args
 from models import CLIPEndToEndPipeline
-from utils.checkpoint import get_base_model, load_checkpoint, save_best_model
+from utils.checkpoint import save_best_model
 from utils.clip_wrapper import load_clip_model
 from utils.dist import (
     MultiGPUWrapper,
@@ -40,6 +40,7 @@ def run_ft_clip(dataset, model_clip, preprocess, split_dict, device, cfg, loss_k
     args = types.SimpleNamespace()
     args.dataset = dataset_cfg.name
     args.batch_size = train_cfg.batch_size
+    args.num_workers = cfg.dist.num_workers
     args.learning_rate = cfg.optimizer.learning_rate
     args.distributed = is_distributed
     args.data_parallel = getattr(cfg.dist, "data_parallel", False)
@@ -303,14 +304,7 @@ def _save_run_artifacts(args, cfg, model, best_model_dict):
         logging.warning("No best_model_state_dict found, only saving last_checkpoint.pt.")
 
     with open(os.path.join(model_checkpoint_folder, "config.json"), "w") as f:
-        config_dict = {}
-        for k, v in vars(args).items():
-            try:
-                json.dumps(v)
-                config_dict[k] = v
-            except (TypeError, ValueError):
-                config_dict[k] = str(v)
-        json.dump(config_dict, f, indent=4)
+        json.dump(OmegaConf.to_container(cfg, resolve=True), f, indent=4)
 
 
 def main_with_cfg(cfg):
@@ -376,23 +370,6 @@ def main_with_cfg(cfg):
     if args.distributed and dist.is_initialized() and not safe_barrier():
         logging.warning("Failed to sync after FT training, continuing anyway")
 
-    try:
-        if args.use_best_model and is_main_process():
-            if best_model_dict is not None:
-                logging.info("Loading best model from validation loss.")
-                base_model = get_base_model(model)
-                base_model.load_state_dict(best_model_dict["best_model_state_dict"])
-                model.to(device)
-            elif args.load_checkpoint:
-                logging.info("No best model found, using the last checkpoint.")
-                load_checkpoint(model, args.load_checkpoint, device=device)
-                model.to(device)
-            else:
-                logging.warning("No checkpoint provided, using the model as is.")
-    except Exception as e:
-        logging.error(f"Failed to load best model: {e}")
-        logging.warning("Proceeding with current model weights.")
-
     if args.distributed and dist.is_initialized():
         if not safe_barrier():
             logging.warning("Failed to sync after FT model loading, continuing anyway")
@@ -400,8 +377,4 @@ def main_with_cfg(cfg):
             logging.error("NCCL health check failed before FT evaluation")
             logging.warning("Proceeding with FT evaluation despite NCCL issues")
 
-    try:
-        _save_run_artifacts(args, cfg, model, best_model_dict)
-    except Exception as e:
-        if is_main_process():
-            logging.error(f"Failed to save checkpoints: {e}")
+    _save_run_artifacts(args, cfg, model, best_model_dict)

@@ -160,6 +160,12 @@ class COCODataset(Dataset):
                 logger.warning(f"Failed to load {json_path}: {e}")
                 continue
         
+        for sample in samples:
+            # The released training archive retains the original run's field names.
+            if "entities" not in sample:
+                sample["entities"] = sample.get("positive_components", [])
+            if "negative_entities" not in sample:
+                sample["negative_entities"] = sample.get("negative_components", {})
         return samples
     
     def __len__(self) -> int:

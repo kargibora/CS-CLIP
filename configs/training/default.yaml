@@ -1,5 +1,5 @@
 batch_size: 128
-epochs: 5
+epochs: 25
 val_ratio: 0.2
 eval_n: 1
 

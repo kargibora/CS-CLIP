@@ -1,271 +1,116 @@
 # CS-CLIP: Component-Supervised CLIP
 
-**[Half-Truths Break Similarity-Based Retrieval](https://arxiv.org/abs/2602.23906)**  
-Bora Kargi, Arnas Uselis, Seong Joon Oh  
-*arXiv preprint arXiv:2602.23906, 2026*
+**[Half-Truths Break Similarity-Based Retrieval](https://arxiv.org/abs/2602.23906)** · NeurIPS 2026
 
-When a text description is extended with an additional detail, image-text similarity should drop if that detail is wrong. We show that CLIP-style dual encoders often violate this intuition: appending a plausible but incorrect object or relation to an otherwise correct description can increase the similarity score. We call such cases *half-truths*. On COCO, CLIP prefers the correct shorter description only 40.6% of the time, and performance drops to 32.9% when the added detail is a relation. We trace this vulnerability to weak supervision on caption parts: contrastive training aligns full sentences but does not explicitly enforce that individual entities and relations are grounded. We propose CS-CLIP (Component-Supervised CLIP), which decomposes captions into entity and relation units, constructs a minimally edited foil for each unit, and fine-tunes the model to score the correct unit above its foil while preserving standard dual-encoder inference. CS-CLIP raises half-truth accuracy to 69.3% and improves average performance on established compositional benchmarks by 5.7 points, suggesting that reducing half-truth errors aligns with broader gains in compositional understanding.
+Bora Kargi, Arnas Uselis, Seong Joon Oh
 
-## Release Status
+CS-CLIP fine-tunes CLIP with entity/relation units and matched foils while retaining standard dual-encoder inference. On the verified COCO–Qwen evaluation, Half-Truth accuracy is **34.0% for CLIP and 76.4% for CS-CLIP**. The compositional benchmark average improves by **5.8 points**.
 
-- [x] CS-CLIP COCO Checkpoint
-- [x] Pre-extracted negatives
-- [x] Training and evaluation code
-- [x] Unit extraction pipeline
-- [ ] Dataset setup instructions
+## Install
 
-## Pre-trained Checkpoints
-
-| Model | Dataset | Download |
-|-------|---------|----------|
-| CS-CLIP-ViT-B/32 | MSCOCO | [link](https://drive.google.com/file/d/14IBgBgKhCDhRHJfnDaFxsTo6ocoS4I6W/view?usp=drive_link) |
-
-## Datasets
-
-Pre-extracted caption units (entities and relations) used for CS-CLIP training.
-
-| Dataset | Description | Download |
-|--------|-------------|----------|
-| MSCOCO | Caption samples with extracted entities and relations | [link](https://drive.google.com/file/d/1DpthIA-5zT_m1GKfqvHUWWH_z2XyEOMP/view?usp=drive_link) |
-
----
-
-The public pipeline has three steps:
-
-1. **(Optional)** Generate entity/relation unit JSON files from captions using the unit pipeline.
-2. Train CLIP using prepared entity/relation JSON files.
-3. Evaluate saved checkpoints on installed benchmark datasets.
-
-Pre-extracted JSON files for MSCOCO are available for download above, so step 1 is only needed if you want to generate your own data.
-
-## Setup
-
-Create and activate your Python environment, then install the dependencies.
+Python 3.11 and a CUDA GPU are recommended for training.
 
 ```bash
+python -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Data
+Prepared training data requires no language model, spaCy model, or benchmark downloads. Additional compositional benchmarks use `requirements-eval.txt`; generating new units/foils uses `requirements-generation.txt`.
 
-Training needs:
+## Datasets
 
-- COCO images, or another image folder referenced by your JSON files.
-- Entity/relation JSON files in the expected format.
+- [CS-CLIP training annotations](https://huggingface.co/datasets/kbora/CS-CLIP-Training): 410,340 caption records, including units, matched foils, and shuffled full-caption negatives.
+- [Half-Truths](https://huggingface.co/datasets/kbora/Half-Truths): 1,437 verified evaluation comparisons with images. Configurations: `coco_qwen` (509), `coco_mistral` (454), `cc3m_qwen` (474).
 
-Evaluation needs:
-
-- The benchmark datasets you want to evaluate on.
-- A dataset root passed with `EVAL_DATA_ROOT`.
-
-No dataset or checkpoint paths are hard-coded. The scripts read paths from environment variables.
-
-## COCO Images
-
-If your training JSON `image_path` values look like `datasets/COCO/train2014/...`, use `IMAGE_ROOT=.`.
-
-One possible COCO layout is:
-
-```text
-datasets/
-  COCO/
-    train2014/
-    val2014/
-    val2017/
-```
-
-Example COCO download commands:
+Download the exact training JSON files:
 
 ```bash
-mkdir -p datasets/COCO
-cd datasets/COCO
-
-wget http://images.cocodataset.org/zips/train2014.zip
-wget http://images.cocodataset.org/zips/val2014.zip
-wget http://images.cocodataset.org/zips/val2017.zip
-
-unzip train2014.zip
-unzip val2014.zip
-unzip val2017.zip
+hf download kbora/CS-CLIP-Training original/training-json.tar.gz \
+  --repo-type dataset --local-dir datasets/CS-CLIP-Training
+mkdir -p datasets/CS-CLIP-Training/json
+tar -xzf datasets/CS-CLIP-Training/original/training-json.tar.gz \
+  -C datasets/CS-CLIP-Training/json
 ```
 
-## Unit Pipeline
-
-The unit pipeline extracts entity and relation units from captions and generates minimally edited foils for each unit. It requires a GPU and [vLLM](https://github.com/vllm-project/vllm).
-
-**Required arguments:**
-
-| Argument | Description |
-|---|---|
-| `--coco_karpathy` | Path to the COCO Karpathy split JSON (`dataset_coco.json`) |
-| `--coco_images_root` | Root directory containing COCO image folders (`train2014/`, `val2014/`, etc.) |
-| `--output` | Output path for the structured negative JSON |
-
-**Common optional arguments:**
-
-| Argument | Default | Description |
-|---|---|---|
-| `--coco_split` | all splits | Filter to a specific split: `train`, `val`, `test`, or `restval` |
-| `--subset START END` | all | Process only captions `[START, END)` — useful for testing |
-| `--positives_output` | — | Also save a JSON of extracted positives (entities + relations, no foils) |
-| `--llm_name` | `Qwen/Qwen3-14B-AWQ` | HuggingFace model name for the LLM |
-| `--llm_batch` | `256` | Batch size passed to vLLM |
-| `--n_neg_per_entity` | `2` | Number of foils to generate per entity unit |
-| `--n_relational_negatives` | `3` | Number of foils to generate per relation unit |
-
-**Example — smoke test on 5 captions:**
-
-```bash
-python cli.py \
-  --coco_karpathy datasets/COCO/dataset_coco.json \
-  --coco_images_root datasets/COCO \
-  --coco_split val \
-  --subset 0 5 \
-  --output /tmp/test_out.json
-```
-
-**Example — full val split:**
-
-```bash
-python cli.py \
-  --coco_karpathy datasets/COCO/dataset_coco.json \
-  --coco_images_root datasets/COCO \
-  --coco_split val \
-  --output neg_json/coco_val.json \
-  --positives_output pos_json/coco_val.json
-```
-
-The output JSON follows the training format described in the next section.
-
-## Training JSON Format
-
-Each JSON sample should contain:
-
-```json
-{
-  "sample_id": "example_id",
-  "original_caption": "A person riding a horse.",
-  "entities": ["person", "horse"],
-  "negative_entities": {
-    "horse": [
-      {"negative": "cow", "change_type": "object_change"}
-    ]
-  },
-  "relations": [
-    {
-      "subject": "person",
-      "relation_type": "riding",
-      "object": "horse",
-      "negatives": [
-        {
-          "subject": "person",
-          "relation_type": "standing next to",
-          "object": "horse",
-          "change_type": "predicate_change"
-        }
-      ]
-    }
-  ],
-  "image_path": "datasets/COCO/train2014/COCO_train2014_000000000001.jpg"
-}
-```
-
-The training script reads all `*.json` files from `TRAIN_JSON_DIR`.
+Download and extract [COCO train2014 images](http://images.cocodataset.org/zips/train2014.zip) to `datasets/COCO/train2014/`. The training loader accepts the archive's original `positive_components` / `negative_components` fields and the generator's `entities` / `negative_entities` fields.
 
 ## Train
 
-Required variables:
-
-- `RUN_NAME`
-- `TRAIN_JSON_DIR`
-- `IMAGE_ROOT`
-
-Example:
+Run from the repository root:
 
 ```bash
-RUN_NAME=coco_ft \
-TRAIN_JSON_DIR=swap_pos_json/coco_train_entities \
+RUN_NAME=csclip \
+TRAIN_JSON_DIR=datasets/CS-CLIP-Training/json \
 IMAGE_ROOT=. \
-GPUS=1 \
-BATCH_SIZE=16 \
-LR=5e-6 \
-EPOCHS=5 \
-SAVE_EVERY_K_STEPS=1000 \
+GPUS=8 \
 ./train_structured.sh
 ```
 
-Checkpoints are written to:
+The defaults follow the saved run configuration: OpenAI ViT-B/32, both encoders fine-tuned, 25 epochs, batch size 128 **per GPU** (1,024 on eight GPUs), AdamW at `5e-6`, weight decay `0.01`, two unit/foil pairs per image, and unit-loss weight `0.5`. The recorded schedule uses three epochs of linear warm-up followed by cosine decay. This differs from the manuscript's one-epoch warm-up wording; the release follows the recorded configuration. Smaller runs can set `GPUS`, `BATCH_SIZE`, and `EPOCHS`, but are not the reported training recipe.
 
-```text
-checkpoints/<RUN_NAME>/
-```
+Outputs are `checkpoints/csclip/last_checkpoint.pt`, `best_checkpoint.pt` when validation identifies one, and the full `config.json`. `last_checkpoint.pt` preserves the final training weights; the paper's evaluated weights are available below.
 
-## Evaluation Datasets
+## Pre-trained checkpoints
 
-Evaluation datasets are resolved under `EVAL_DATA_ROOT`.
+| Model | Training images | Download |
+|---|---|---|
+| CS-CLIP ViT-B/32 | COCO | [Checkpoint](https://drive.google.com/file/d/14IBgBgKhCDhRHJfnDaFxsTo6ocoS4I6W/view) |
 
-For example:
+The linked checkpoint matches the evaluated paper checkpoint byte-for-byte (SHA-256: `556c2763469bb32a93d01732e1bf72d6bac5b4b194a7175421858e16beae4dcc`). Save it as `checkpoints/csclip/last_checkpoint.pt` for the command below.
 
-```text
-datasets/
-  WhatsUp/
-  Winoground/
-  SugarCrepe/
-  VALSE/
-```
+## Evaluate Half-Truths
 
-Common dataset names:
-
-- `VG_Attribution`, `VG_Relation`, `COCO_Order`, `Flickr30k_Order` use `EVAL_DATA_ROOT/WhatsUp`.
-- `Winoground` uses `EVAL_DATA_ROOT/Winoground`.
-- `SugarCrepe` uses `EVAL_DATA_ROOT/SugarCrepe` and expects COCO `val2017` inside that folder.
-- `VALSE` uses `EVAL_DATA_ROOT/VALSE` as its Hugging Face cache directory.
-
-Some loaders download from Hugging Face on first use. Others expect files to already exist locally.
-
-## Evaluate
-
-Required variables:
-
-- `CHECKPOINT_PATH`
-- `CHECKPOINT_CONFIG`
-
-Optional variables:
-
-- `EVAL_DATA_ROOT`
-- `DATASETS`
-- `OUTPUT_CSV`
-- `OUTPUT_DIR`
-- `BASE_MODEL`
-
-Example:
+The evaluation command downloads the selected configuration from Hugging Face:
 
 ```bash
-CHECKPOINT_PATH=checkpoints/coco_ft/checkpoint_step_1000.pt \
-CHECKPOINT_CONFIG=checkpoints/coco_ft/config.json \
-EVAL_DATA_ROOT=datasets \
-DATASETS=VG_Attribution \
-OUTPUT_CSV=coco_ft_vg_attr.csv \
-./eval_checkpoint.sh
+# Pretrained CLIP
+python scripts/evaluate_half_truth.py --subset coco_qwen --output results/clip.json
+
+# CS-CLIP
+python scripts/evaluate_half_truth.py --subset coco_qwen \
+  --checkpoint checkpoints/csclip/last_checkpoint.pt --output results/csclip.json
 ```
 
-Results are written to:
+Use `coco_mistral` or `cc3m_qwen` for the other configurations. The output includes per-comparison scores, counts, entity/relation accuracy, and Correct-Ordering Rate. See [metric definitions](docs/half_truth.md).
 
-```text
-evaluation_results/
+| Model | COCO–Qwen | COCO–Mistral | CC3M–Qwen |
+|---|---:|---:|---:|
+| CLIP | 34.0 | 28.6 | 36.1 |
+| CS-CLIP | 76.4 | 67.2 | 66.2 |
+
+Values are Half-Truth accuracy (%). The released rows are evaluation-only.
+
+## Optional workflows
+
+For the compositional benchmarks, install `requirements-eval.txt`, prepare the relevant benchmark's data, and run:
+
+```bash
+CHECKPOINT_PATH=checkpoints/csclip/last_checkpoint.pt \
+CHECKPOINT_CONFIG=checkpoints/csclip/config.json \
+EVAL_DATA_ROOT=datasets DATASETS=VG_Attribution ./eval_checkpoint.sh
 ```
 
-## Half-Truth Evaluation
+To generate units and foils for new captions, install `requirements-generation.txt` and run `python cli.py --help`. This is optional: the prepared training archive is the reproducible source for the reported run.
 
-The half-truth scripts are documented separately in [docs/half_truth.md](docs/half_truth.md).
+## Checks
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+These check the unit-loss equation and gradients, original training-data schema, final/best checkpoint separation, complete configuration saving, and strict HT/COR comparisons.
 
 ## Citation
 
+Code is released under the [MIT license](LICENSE). Generated annotations use CC BY 4.0; source images and captions retain their original terms.
+
 ```bibtex
-@article{kargi2026halftruths,
-  title   = {Half-Truths Break Similarity-Based Retrieval},
-  author  = {Kargi, Bora and Uselis, Arnas and Oh, Seong Joon},
-  year    = {2026},
-  journal = {arXiv preprint arXiv:2602.23906},
+@inproceedings{kargi2026halftruths,
+  title={Half-Truths Break Similarity-Based Retrieval},
+  author={Kargi, Bora and Uselis, Arnas and Oh, Seong Joon},
+  booktitle={Advances in Neural Information Processing Systems},
+  year={2026},
+  url={https://arxiv.org/abs/2602.23906}
 }
 ```

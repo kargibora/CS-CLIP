@@ -31,10 +31,10 @@ if [ ! -d "${IMAGE_ROOT}" ]; then
     exit 1
 fi
 
-GPUS="${GPUS:-1}"
+GPUS="${GPUS:-8}"
 BATCH_SIZE="${BATCH_SIZE:-128}"
 LR="${LR:-5e-6}"
-EPOCHS="${EPOCHS:-5}"
+EPOCHS="${EPOCHS:-25}"
 SAVE_EVERY_K_STEPS="${SAVE_EVERY_K_STEPS:-0}"
 MASTER_PORT="${MASTER_PORT:-12346}"
 
@@ -48,7 +48,8 @@ echo "Run: ${RUN_NAME}"
 echo "Train JSON: ${TRAIN_JSON_DIR}"
 echo "Image root: ${IMAGE_ROOT}"
 echo "GPUs: ${GPUS}"
-echo "Batch size: ${BATCH_SIZE}"
+echo "Batch size per GPU: ${BATCH_SIZE}"
+echo "Global batch size: $((BATCH_SIZE * GPUS))"
 echo "LR: ${LR}"
 echo "Epochs: ${EPOCHS}"
 echo "Step checkpoint: ${SAVE_EVERY_OVERRIDE}"

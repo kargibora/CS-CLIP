@@ -1,54 +1,20 @@
-# Half-Truth Evaluation
+# Half-Truth evaluation
 
-The main training and checkpoint evaluation flow does not depend on the half-truth scripts.
-
-These scripts are kept for diagnostic evaluation:
-
-- `run_half_truth.sh`
-- `run_half_truth_batch.sh`
-- `run_image_half_truth_batch.sh`
-
-## Caption-Side Half-Truth
-
-`run_half_truth.sh` evaluates whether a model prefers longer partially incorrect captions over shorter correct captions.
-
-Required COCO inputs:
+Install the repository's `requirements.txt`, then run:
 
 ```bash
-COCO_JSON=/path/to/coco_val_entities
-COCO_IMAGE_ROOT=/path/to/image_root
+python scripts/evaluate_half_truth.py --subset coco_qwen --output results/clip.json
+python scripts/evaluate_half_truth.py --subset coco_qwen \
+  --checkpoint checkpoints/csclip/last_checkpoint.pt --output results/csclip.json
 ```
 
-Example:
+The [Hugging Face release](https://huggingface.co/datasets/kbora/Half-Truths) provides `coco_qwen` (509 comparisons), `coco_mistral` (454), and `cc3m_qwen` (474). Each configuration is an evaluation `test` split. Images are embedded in Parquet; external image downloads are not needed.
 
-```bash
-COCO_JSON=/path/to/coco_val_entities \
-COCO_IMAGE_ROOT=/path/to/image_root \
-./run_half_truth.sh \
-  --checkpoint_path /path/to/checkpoint.pt \
-  --checkpoint_type external
-```
+For offline evaluation, pass `--data /path/to/coco_qwen.parquet`. A local JSONL file is also supported with `--image-root` resolving its `image` paths. Checkpoints must match the CLIP backbone exactly; incompatible weights fail loading.
 
-## Batch Caption-Side Half-Truth
+For normalized embeddings, let `s` be cosine similarity:
 
-`run_half_truth_batch.sh` reads checkpoints from `configs/eval_checkpoints.yaml`.
+- HT: `s(image, anchor) > s(image, half_truth)`.
+- COR: `s(image, full_truth) > s(image, anchor) > s(image, half_truth)`.
 
-Example:
-
-```bash
-COCO_JSON=/path/to/coco_val_entities \
-COCO_IMAGE_ROOT=/path/to/image_root \
-./run_half_truth_batch.sh --config configs/eval_checkpoints.yaml
-```
-
-## Image-Side Half-Truth
-
-`run_image_half_truth_batch.sh` evaluates image retrieval under partially shared visual content.
-
-Example:
-
-```bash
-COCO_JSON=/path/to/coco_val_entities \
-COCO_IMAGE_ROOT=/path/to/image_root \
-./run_image_half_truth_batch.sh --config configs/eval_checkpoints.yaml
-```
+Ties count as incorrect. Both metrics use all released rows with no additional filtering. Results include overall, entity, and relation counts, correct counts, percentages, and per-comparison scores. Overall scores weight rows equally; the three-source average weights configurations equally.
