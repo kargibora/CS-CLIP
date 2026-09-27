@@ -1,0 +1,5 @@
+# Only needed to regenerate units/foils; prepared data needs no language model.
+vllm>=0.8
+pydantic>=2
+Pillow>=10
+tqdm>=4.66

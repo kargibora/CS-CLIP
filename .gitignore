@@ -12,3 +12,5 @@ temp/
 evaluation_results/
 .pytest_cache/
 __pycache__/
+
+.venv/

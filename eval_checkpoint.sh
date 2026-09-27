@@ -1,6 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 if [ "$#" -gt 0 ]; then
     echo "This script is configured with environment variables, not command-line flags."
     echo "Required: CHECKPOINT_PATH, CHECKPOINT_CONFIG"
@@ -56,7 +58,7 @@ echo "=========================================="
 echo ""
 
 CMD=(
-    "${PYTHON_BIN}" scripts/batch_evaluate_checkpoints.py
+    "${PYTHON_BIN}" "${SCRIPT_DIR}/scripts/batch_evaluate_checkpoints.py"
     --checkpoint_type local
     --checkpoint_path "${CHECKPOINT_PATH}"
     --base_model "${BASE_MODEL}"

@@ -241,7 +241,7 @@ def create_distributed_dataloader(
         pin_memory=pin_memory,
         persistent_workers=num_workers > 0,
         # Disable prefetch for distributed training to reduce memory usage
-        prefetch_factor=1 if distributed and num_workers > 0 else 2,
+        prefetch_factor=(1 if distributed else 2) if num_workers > 0 else None,
         collate_fn=getattr(dataset, "collate_fn", None),  # Use dataset's collate_fn if available
     )
     return dataloader, sampler
