@@ -24,10 +24,10 @@ from .coco_neg import COCODataset, COCONeg, COCONegDataset
 def get_dataset_class(name):
     """
     Returns the dataset class based on the provided name.
-    
+
     Args:
         name (str): The name of the dataset class to retrieve.
-        
+
     Returns:
         type: The dataset class corresponding to the provided name.
     """
@@ -61,7 +61,7 @@ def get_dataset_class(name):
 def get_dataset_embedding_class(name):
     """
     Returns the embedding dataset class based on the provided name.
-    
+
     Args:
         name (str): The name of the embedding dataset class to retrieve
     """
@@ -83,30 +83,30 @@ def get_dataset_embedding_class(name):
         "MMVP": MMVPNeg,
         "COCONeg": COCONeg,
     }
-    
+
     return embedding_classes.get(name, None)  # Return None if not found
 
 
 def build_sampler(name, **sampler_kwargs):
     """
     Returns the sampler class based on the provided name.
-    
+
     Args:
         name (str): The name of the sampler class to retrieve.
         dataset (Dataset): The dataset to be used with the sampler.
         indices (list, optional): Specific indices to sample from. Defaults to None.
-        
+
     Returns:
         type: The sampler class corresponding to the provided name.
     """
     sampler_classes = {
         "SPEC_I2T": GroupUniqueBatchSampler,
     }
-    
+
     sampler_class = sampler_classes.get(name, None)
     if sampler_class is not None:
         return sampler_class(**sampler_kwargs)
-    
+
     return None  # Return None if not found
 
 
@@ -116,12 +116,12 @@ def build_dataset_from_args(args, preprocess=None):
     The main process detection is now handled automatically by the datasets.
     Supports dataset_kwargs for dataset-specific configuration.
     """
-    
+
     # Get dataset-specific kwargs if available
     dataset_kwargs = {}
     if hasattr(args, 'dataset_kwargs') and args.dataset_kwargs is not None:
         dataset_kwargs = args.dataset_kwargs
-    
+
     # Set default data_path for each dataset if not provided
     if args.data_path is None:
         if args.dataset == 'BLA':
@@ -176,74 +176,74 @@ def build_dataset_from_args(args, preprocess=None):
         default_kwargs = {'split': 'test'}
         default_kwargs.update(dataset_kwargs)
         dataset = BLADataset(args.data_path, subset=args.subset_name, image_preprocess=preprocess, **default_kwargs)
-        
+
     elif args.dataset == 'VALSE':
         dataset = VALSEDataset(args.data_path, args.subset_name, preprocess, **dataset_kwargs)
-        
+
     elif args.dataset == 'VL_CheckList':
         dataset = VLCheckListDataset(args.data_path, args.subset_name, preprocess, **dataset_kwargs)
-        
+
     elif args.dataset == 'ColorSwap':
         dataset = ColorSwapDataset(args.data_path, args.subset_name, preprocess, **dataset_kwargs)
-        
+
     elif args.dataset == 'ColorFoil':
         dataset = ColorFoilDataset(args.data_path, args.subset_name, preprocess, **dataset_kwargs)
-        
+
     elif args.dataset == 'COCO_Counterfactuals':
         dataset = COCOCounterfactualsDataset(args.data_path, args.subset_name, preprocess, **dataset_kwargs)
-        
+
     elif args.dataset == 'ControlledImages':
         dataset = Controlled_Images(args.data_path, args.subset_name, preprocess, **dataset_kwargs)
-        
+
     elif args.dataset == 'CC3M':
         default_kwargs = {'combine_by_caption_id': False}
         default_kwargs.update(dataset_kwargs)
         dataset = CC3MDataset(args.data_path, args.subset_name, preprocess, **default_kwargs)
-        
+
     elif args.dataset == 'VG_Attribution':
         default_kwargs = {'download': False}
         default_kwargs.update(dataset_kwargs)
         dataset = VG_Attribution(args.data_path, args.subset_name, preprocess, **default_kwargs)
-        
+
     elif args.dataset == 'VG_Relation':
         default_kwargs = {'download': False}
         default_kwargs.update(dataset_kwargs)
         dataset = VG_Relation(args.data_path, args.subset_name, preprocess, **default_kwargs)
-        
+
     elif args.dataset == 'COCO_Order':
         default_kwargs = {'download': False}
         default_kwargs.update(dataset_kwargs)
         dataset = COCO_Order(args.data_path, args.subset_name, preprocess, **default_kwargs)
-        
+
     elif args.dataset == 'Flickr30k_Order':
         default_kwargs = {'download': False}
         default_kwargs.update(dataset_kwargs)
         dataset = Flickr30k_Order(args.data_path, args.subset_name, preprocess, **default_kwargs)
-        
+
     elif args.dataset == 'VisMin':
         dataset = VisMinDataset(args.data_path, args.subset_name, preprocess, **dataset_kwargs)
-        
+
     elif args.dataset == 'SugarCrepe':
         default_kwargs = {'coco_root': args.data_path}
         default_kwargs.update(dataset_kwargs)
         dataset = SugarCrepeDataset(args.data_path, args.subset_name, image_preprocess=preprocess, **default_kwargs)
-        
+
     elif args.dataset == 'SugarCrepe_PP':
         default_kwargs = {'coco_root': args.data_path}
         default_kwargs.update(dataset_kwargs)
         dataset = SugarCrepePPDataset(args.subset_name, image_preprocess=preprocess, **default_kwargs)
-        
+
     elif args.dataset == 'SPEC_I2T':
         dataset = SPECImage2TextDataset(args.data_path, args.subset_name, preprocess, **dataset_kwargs)
-        
+
     elif args.dataset == 'Winoground':
         default_kwargs = {'use_auth_token': "your_token"}
         default_kwargs.update(dataset_kwargs)
         dataset = WinogroundDataset(args.data_path, args.subset_name, preprocess, **default_kwargs)
-        
+
     elif args.dataset == 'NegBench':
         dataset = NegBenchDataset(args.data_path, args.subset_name, preprocess, **dataset_kwargs)
-    
+
     elif args.dataset == 'COCONeg':
         default_kwargs = {
             'num_entity_captions': 3,
@@ -267,12 +267,12 @@ def build_dataset_from_args(args, preprocess=None):
             subset_name=args.subset_name,
             **default_kwargs
         )
-    
+
     elif args.dataset == 'COLA':
         # Handle both multi-object and single-object subsets
         default_kwargs = {'download': True}
         default_kwargs.update(dataset_kwargs)
-        
+
         if args.subset_name == 'multi_objects':
             dataset = COLAMultiObjectDataset(
                 data_root=args.data_path,
@@ -291,7 +291,7 @@ def build_dataset_from_args(args, preprocess=None):
             )
         else:
             raise ValueError(f"Invalid COLA subset: {args.subset_name}. Choose from ['multi_objects', 'single_GQA', 'single_CLEVR', 'single_PACO']")
-    
+
     elif args.dataset == 'CLIPBenchmark':
         # CLIP Benchmark datasets (ImageNet, CIFAR, COCO, Flickr, etc.)
         default_kwargs = {
@@ -300,18 +300,18 @@ def build_dataset_from_args(args, preprocess=None):
             'download': True,
         }
         default_kwargs.update(dataset_kwargs)
-        
+
         # Get the actual dataset name from args.clip_benchmark_name
         # This is set by simple_dataset_evaluation.py when parsing CLIPBench_ prefix
         clip_benchmark_name = getattr(args, 'clip_benchmark_name', args.subset_name)
-        
+
         dataset = CLIPBenchmarkDataset(
             dataset_name=clip_benchmark_name,
             data_root=args.data_path,
             image_preprocess=preprocess,
             **default_kwargs
         )
-    
+
     elif args.dataset == 'SVOProbes':
         # SVO Probes dataset
         default_kwargs = {
@@ -346,11 +346,11 @@ def build_dataset_from_args(args, preprocess=None):
 def get_dataset_cache_name(args, cache_folder = None, is_image=True, is_dict=True):
     """
     Returns the cache name for the dataset based on the provided arguments.
-    
+
     Args:
         args (argparse.Namespace): The parsed command line arguments.
         cache_folder (str): The folder where the cache is stored. If None, uses args.cache_folder or default.
-        
+
     Returns:
         str: The cache name for the dataset.
     """

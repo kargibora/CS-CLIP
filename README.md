@@ -43,11 +43,11 @@ Run from the repository root:
 RUN_NAME=csclip \
 TRAIN_JSON_DIR=datasets/CS-CLIP-Training/json \
 IMAGE_ROOT=. \
-GPUS=8 \
+GPUS=8 EPOCHS=25 \
 ./train_structured.sh
 ```
 
-The defaults follow the saved run configuration: OpenAI ViT-B/32, both encoders fine-tuned, 25 epochs, batch size 128 **per GPU** (1,024 on eight GPUs), AdamW at `5e-6`, weight decay `0.01`, two unit/foil pairs per image, and unit-loss weight `0.5`. The recorded schedule uses three epochs of linear warm-up followed by cosine decay. This differs from the manuscript's one-epoch warm-up wording; the release follows the recorded configuration. Smaller runs can set `GPUS`, `BATCH_SIZE`, and `EPOCHS`, but are not the reported training recipe.
+This command fine-tunes both encoders of OpenAI ViT-B/32 for 25 epochs, with batch size 128 per GPU, AdamW at `5e-6`, weight decay `0.01`, two unit/foil pairs per image, and unit-loss weight `0.5`.
 
 Outputs are `checkpoints/csclip/last_checkpoint.pt`, `best_checkpoint.pt` when validation identifies one, and the full `config.json`. `last_checkpoint.pt` preserves the final training weights; the paper's evaluated weights are available below.
 

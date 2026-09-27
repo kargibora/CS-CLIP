@@ -58,7 +58,7 @@ def main():
         state = checkpoint.get('model_state_dict', checkpoint.get('state_dict', checkpoint))
         state = {k: v for k, v in clean_state_dict(state).items() if not k.startswith('head.')}
         model.load_state_dict(state, strict=True)
-    model.eval()
+    model.float().eval()
     tokenize = get_tokenizer('ViT-B/32', 'openclip' if fine_tuned else 'openai')
     records = load_records(args.data, args.subset)
     if not records:

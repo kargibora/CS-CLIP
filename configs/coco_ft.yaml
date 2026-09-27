@@ -22,7 +22,7 @@ alignment:
 
 training:
   batch_size: 128
-  epochs: 25
+  epochs: 5
 
 optimizer:
   type: "adamw"

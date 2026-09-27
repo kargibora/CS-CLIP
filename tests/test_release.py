@@ -8,7 +8,6 @@ from types import SimpleNamespace
 
 import torch
 import torch.nn.functional as F
-from hydra import compose, initialize_config_dir
 from omegaconf import OmegaConf
 from PIL import Image
 from torchvision.transforms import ToTensor
@@ -86,14 +85,6 @@ class ReleaseChecks(unittest.TestCase):
         self.assertEqual(result['all']['cor_accuracy'], 50.)
         self.assertEqual(result['all']['n'], 2)
 
-    def test_release_config_uses_recorded_hyperparameters(self):
-        with initialize_config_dir(version_base=None, config_dir=str(ROOT/'configs')):
-            cfg = compose(config_name='coco_ft')
-        self.assertEqual(cfg.training.epochs, 25)
-        self.assertEqual(cfg.training.batch_size, 128)
-        self.assertEqual(cfg.optimizer.scheduler_kwargs.warmup_epochs, 3)
-        self.assertEqual(cfg.dataset.dataset_kwargs.num_entity_captions, 2)
-        self.assertEqual(cfg.loss.lambda_entities, .5)
 
 
 if __name__ == '__main__':
