@@ -52,12 +52,15 @@ def main():
         parser.error('--batch-size must be positive')
     device = torch.device(args.device)
     fine_tuned = args.checkpoint is not None
-    model, preprocess = load_clip_model('ViT-B/32', device, force_openclip=fine_tuned)
     if fine_tuned:
+        import open_clip
+        model, _, preprocess = open_clip.create_model_and_transforms('ViT-B-32', device=device)
         checkpoint = torch.load(args.checkpoint, map_location='cpu', weights_only=True)
         state = checkpoint.get('model_state_dict', checkpoint.get('state_dict', checkpoint))
         state = {k: v for k, v in clean_state_dict(state).items() if not k.startswith('head.')}
         model.load_state_dict(state, strict=True)
+    else:
+        model, preprocess = load_clip_model('ViT-B/32', device)
     model.float().eval()
     tokenize = get_tokenizer('ViT-B/32', 'openclip' if fine_tuned else 'openai')
     records = load_records(args.data, args.subset)

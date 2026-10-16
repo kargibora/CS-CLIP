@@ -17,6 +17,9 @@ from alignment.losses import _compute_negclip_hard_loss_for_components
 from data_loading import build_dataset_from_args, get_dataset_embedding_class
 from scripts.evaluate_half_truth import summarize
 from utils.dist import create_distributed_dataloader
+from models import CLIPEndToEndPipeline
+from open_clip import CLIP
+from scripts.batch_evaluate_checkpoints import BatchCheckpointEvaluator
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -84,6 +87,45 @@ class ReleaseChecks(unittest.TestCase):
         self.assertEqual(result['all']['ht_accuracy'], 50.)
         self.assertEqual(result['all']['cor_accuracy'], 50.)
         self.assertEqual(result['all']['n'], 2)
+
+    def test_final_clip_checkpoints_load_directly_and_keep_best_distinct(self):
+        def small_clip():
+            return CLIP(embed_dim=8,
+                        vision_cfg={'layers': 1, 'width': 64, 'patch_size': 16, 'image_size': 32},
+                        text_cfg={'context_length': 8, 'vocab_size': 32, 'width': 64, 'heads': 1, 'layers': 1})
+
+        with tempfile.TemporaryDirectory() as directory:
+            backbone = small_clip()
+            head = torch.nn.Module()
+            head.register_parameter('logit_scale', torch.nn.Parameter(torch.tensor(1.)))
+            model = CLIPEndToEndPipeline(backbone, head)
+            best = {k: v.clone() for k, v in model.state_dict().items()}
+            with torch.no_grad():
+                backbone.visual.conv1.weight.add_(1.)
+            cfg = OmegaConf.create({'alignment': {'align_image': False, 'align_text': False}})
+            args = SimpleNamespace(save_path=directory, exp_name='run')
+            _save_run_artifacts(args, cfg, torch.nn.DataParallel(model), {'best_model_state_dict': best})
+            out = Path(directory) / 'run'
+            for filename in ('last_checkpoint.pt', 'best_checkpoint.pt'):
+                state = torch.load(out / filename, weights_only=True)
+                restored = small_clip()
+                restored.load_state_dict(state, strict=True)
+                expected = backbone.state_dict() if filename.startswith('last') else {
+                    k.removeprefix('model.'): v for k, v in best.items() if k.startswith('model.')}
+                for key in state:
+                    torch.testing.assert_close(state[key], expected[key], rtol=0, atol=0)
+                evaluator = BatchCheckpointEvaluator.__new__(BatchCheckpointEvaluator)
+                loaded = evaluator._load_ft_checkpoint(restored, state, cfg)
+                self.assertIs(loaded, restored)
+                self.assertFalse(loaded.training)
+
+            cfg.alignment.align_text = True
+            _save_run_artifacts(args, cfg, model, {'best_model_state_dict': best})
+            wrapped = torch.load(out / 'last_checkpoint.pt', weights_only=True)
+            self.assertIn('head.logit_scale', wrapped)
+            self.assertIn('model.visual.conv1.weight', wrapped)
+            with self.assertRaisesRegex(ValueError, 'alignment'):
+                evaluator._load_ft_checkpoint(small_clip(), state, cfg)
 
 
 

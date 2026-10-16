@@ -1411,6 +1411,13 @@ class BatchCheckpointEvaluator:
         
         # Clean state dict - remove common prefixes (module., model., etc.)
         state_dict = self._clean_state_dict(state_dict)
+
+        if 'visual.conv1.weight' in state_dict:
+            if (OmegaConf.select(cfg, 'alignment.align_image', default=False)
+                    or OmegaConf.select(cfg, 'alignment.align_text', default=False)):
+                raise ValueError('Encoder-only weights do not contain the configured alignment head.')
+            clip_model.load_state_dict(state_dict, strict=True)
+            return clip_model.eval()
         
         # Get layer names from config
         image_layer_names = ['final'] + list(getattr(cfg.model, 'image_layer_names', []))
