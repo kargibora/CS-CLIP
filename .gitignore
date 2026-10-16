@@ -14,3 +14,13 @@ evaluation_results/
 __pycache__/
 
 .venv/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.bin
+*.safetensors
+*.log

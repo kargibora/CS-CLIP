@@ -10,7 +10,7 @@ from omegaconf import OmegaConf
 from alignment.learning_alignment import train_model_multigpu_merged_batch
 from data_loading import build_dataset_from_args
 from models import CLIPEndToEndPipeline
-from utils.checkpoint import save_best_model
+from utils.checkpoint_loader import clean_state_dict
 from utils.clip_wrapper import load_clip_model
 from utils.dist import (
     MultiGPUWrapper,
@@ -296,12 +296,21 @@ def _save_run_artifacts(args, cfg, model, best_model_dict):
     model_checkpoint_folder = os.path.join(args.save_path, f"{args.exp_name}")
     os.makedirs(model_checkpoint_folder, exist_ok=True)
 
-    save_best_model(model, os.path.join(model_checkpoint_folder, "last_checkpoint.pt"))
+    if isinstance(model, (torch.nn.DataParallel, torch.nn.parallel.DistributedDataParallel)):
+        model = model.module
+    states = {"last_checkpoint.pt": model.state_dict()}
     if best_model_dict is not None and best_model_dict.get("best_model_state_dict") is not None:
-        torch.save(best_model_dict["best_model_state_dict"], os.path.join(model_checkpoint_folder, "best_checkpoint.pt"))
-        logging.info(f"Saved best checkpoint to {model_checkpoint_folder}/best_checkpoint.pt")
+        states["best_checkpoint.pt"] = best_model_dict["best_model_state_dict"]
     else:
         logging.warning("No best_model_state_dict found, only saving last_checkpoint.pt.")
+
+    encoder_only = not (OmegaConf.select(cfg, "alignment.align_image", default=False)
+                        or OmegaConf.select(cfg, "alignment.align_text", default=False))
+    for filename, state in states.items():
+        if encoder_only:
+            state = {k: v for k, v in clean_state_dict(state).items() if not k.startswith("head.")}
+        torch.save(state, os.path.join(model_checkpoint_folder, filename))
+        logging.info("Saved checkpoint to %s/%s", model_checkpoint_folder, filename)
 
     with open(os.path.join(model_checkpoint_folder, "config.json"), "w") as f:
         json.dump(OmegaConf.to_container(cfg, resolve=True), f, indent=4)

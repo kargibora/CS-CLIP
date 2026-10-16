@@ -1,11 +1,13 @@
 # Half-Truth evaluation
 
-Install the repository's `requirements.txt`, then run:
+Install the repository's `requirements.txt`, then download the model and run:
 
 ```bash
+hf download kbora/CS-CLIP open_clip_pytorch_model.bin --local-dir checkpoints/csclip
+
 python scripts/evaluate_half_truth.py --subset coco_qwen --output results/clip.json
 python scripts/evaluate_half_truth.py --subset coco_qwen \
-  --checkpoint checkpoints/csclip/last_checkpoint.pt --output results/csclip.json
+  --checkpoint checkpoints/csclip/open_clip_pytorch_model.bin --output results/csclip.json
 ```
 
 The [Hugging Face release](https://huggingface.co/datasets/kbora/Half-Truths) provides `coco_qwen` (509 comparisons), `coco_mistral` (454), and `cc3m_qwen` (474). Each configuration is an evaluation `test` split. Images are embedded in Parquet; external image downloads are not needed.
