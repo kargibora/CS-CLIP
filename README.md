@@ -1,11 +1,23 @@
 # CS-CLIP: Component-Supervised CLIP
 
+[![Paper](https://img.shields.io/badge/Paper-arXiv-8c1b13?logo=arxiv&logoColor=white)](https://arxiv.org/abs/2602.23906)
+[![Project page](https://img.shields.io/badge/Project-Page-6847a3?logo=github&logoColor=white)](https://kargibora.github.io/half-truths/)
+[![Checkpoint](https://img.shields.io/badge/Hugging_Face-Checkpoint-ffd21e?logo=huggingface)](https://huggingface.co/kbora/CS-CLIP)
+[![Evaluation data](https://img.shields.io/badge/Hugging_Face-Evaluation_Data-ffd21e?logo=huggingface)](https://huggingface.co/datasets/kbora/Half-Truths)
+[![Training data](https://img.shields.io/badge/Hugging_Face-Training_Data-ffd21e?logo=huggingface)](https://huggingface.co/datasets/kbora/CS-CLIP-Training)
+
 **Half-Truths Break Similarity-Based Retrieval · NeurIPS 2026**
 Bora Kargi, Arnas Uselis, Seong Joon Oh
 
-[Paper](https://arxiv.org/abs/2602.23906) · [Project page](https://kargibora.github.io/half-truths/) · [Model](https://huggingface.co/kbora/CS-CLIP) · [Evaluation data](https://huggingface.co/datasets/kbora/Half-Truths) · [Training data](https://huggingface.co/datasets/kbora/CS-CLIP-Training)
-
 CLIP can assign higher image–text similarity after a plausible but incorrect detail is added to a correct caption. We study this half-truth failure and introduce CS-CLIP, which fine-tunes CLIP with entity/relation units and matched foils while retaining standard dual-encoder inference.
+
+## Abstract
+
+When a text description is extended with an additional detail, image-text similarity should drop if that detail is wrong. We show that CLIP-style dual encoders often violate this intuition: appending a plausible but incorrect object or relation to an otherwise correct description can increase the similarity score. We call such cases *half-truths*.
+
+Across 1,437 manually verified comparisons from COCO and CC3M using two foil generators, we find that this failure persists across generators and image domains. On COCO with Qwen-generated foils, CLIP prefers the correct shorter description only 34.0% of the time, dropping to 27.8% for relation additions.
+
+We trace this vulnerability to weak supervision on caption parts: contrastive training aligns full sentences but does not explicitly enforce that individual entities and relations are grounded. We propose CS-CLIP (Component-Supervised CLIP), which decomposes captions into entity and relation units, constructs a minimally edited foil for each unit, and fine-tunes the model to score the correct unit above its foil while preserving standard dual-encoder inference. CS-CLIP raises half-truth accuracy to 76.4% on this set and improves average performance on established compositional benchmarks by 5.8 points, suggesting that reducing half-truth errors aligns with broader gains in compositional understanding.
 
 ## Use the model
 
